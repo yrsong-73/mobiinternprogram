@@ -1,0 +1,2991 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>34기 인턴십 교육 파일 | Mobidays</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --mobi-orange: #FF6B2B;
+    --mobi-orange-light: #FFF0EA;
+    --mobi-orange-border: #FFCFB8;
+    --mobi-dark: #1A1A2E;
+    --mobi-navy: #1B2C56;
+    --mobi-mid: #2D2D44;
+    --bg-main: #F7F6F2;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A2E;
+    --text-secondary: #5A5A72;
+    --text-muted: #9898AA;
+    --border: #E8E6E0;
+    --border-strong: #CFCDC5;
+    --exam-color: #E85D75;
+    --exam-bg: #FFF0F3;
+    --exam-border: #F9BFCC;
+    --online-color: #3B82F6;
+    --offline-color: #059669;
+    --self-color: #8B5CF6;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--mobi-dark);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    padding: 18px 0;
+    margin-right: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-logo span {
+    background: var(--mobi-orange);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .nav-tab {
+    color: rgba(255,255,255,0.5);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 18px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: rgba(255,255,255,0.85); }
+  .nav-tab.active {
+    color: #fff;
+    border-bottom-color: var(--mobi-orange);
+  }
+  .nav-tab i { font-size: 14px; }
+
+  /* ── 사용자 배지 ── */
+  .nav-user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-user-name {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .nav-role-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-role-badge.hrd {
+    background: rgba(255,107,43,0.25);
+    border: 1px solid rgba(255,107,43,0.5);
+    color: #FF9469;
+  }
+  .nav-role-badge.intern {
+    background: rgba(59,130,246,0.2);
+    border: 1px solid rgba(59,130,246,0.4);
+    color: #93C5FD;
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; padding: 32px; max-width: 1400px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    margin-bottom: 28px;
+  }
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .page-header p {
+    color: var(--text-secondary);
+    font-size: 13.5px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+  }
+
+  /* ── SCHEDULE PAGE ── */
+  .schedule-top {
+    background: var(--mobi-dark);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .schedule-top-left { display: flex; align-items: center; gap: 16px; }
+  .folder-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,107,43,0.15);
+    border: 1px solid rgba(255,107,43,0.3);
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+    color: #FF9469;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .folder-link:hover { background: rgba(255,107,43,0.25); }
+  .folder-link i { font-size: 16px; }
+  .schedule-info { color: rgba(255,255,255,0.7); font-size: 13px; }
+  .schedule-info strong { color: #fff; }
+
+  .job-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .job-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border-strong);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .job-tab.active {
+    background: var(--mobi-dark);
+    border-color: var(--mobi-dark);
+    color: #fff;
+  }
+  .job-tab:hover:not(.active) { border-color: var(--mobi-dark); color: var(--text-primary); }
+
+  /* HRD 편집 토글 */
+  .hrd-edit-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--mobi-orange);
+    background: var(--mobi-orange-light);
+    color: var(--mobi-orange);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+  }
+  .hrd-edit-btn.active {
+    background: var(--mobi-orange);
+    color: #fff;
+  }
+  .hrd-edit-btn:hover { opacity: 0.85; }
+
+  .week-section { margin-bottom: 36px; }
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .week-badge {
+    background: var(--mobi-dark);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.2px;
+  }
+  .week-subtitle { color: var(--text-muted); font-size: 12.5px; }
+
+  /* ── 새 시간표: 시간축 + 요일 컬럼 ── */
+  .timetable-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    overflow-y: visible;
+    box-shadow: var(--shadow);
+  }
+  .timetable-head {
+    display: grid;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 57px;
+    z-index: 10;
+    background: var(--bg-card);
+  }
+  .timetable-head-time {
+    background: var(--mobi-navy);
+    color: rgba(255,255,255,0.75);
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 10px 0;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  .timetable-head-day {
+    background: var(--mobi-navy);
+    padding: 10px 8px;
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.1);
+  }
+  .timetable-head-day .day-n { color: rgba(255,255,255,0.7); font-size: 10px; font-weight: 500; }
+  .timetable-head-day .day-date { color: #fff; font-size: 13px; font-weight: 700; margin-top: 1px; }
+  .timetable-head-day .day-eval-wrap { margin-top: 5px; display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+
+  .timetable-body { display: grid; }
+  .timetable-time-col {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+  }
+  .timetable-time-slot {
+    height: 72px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 4px 8px 0 0;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #6B7280;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  .timetable-day-col {
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100%;
+    overflow: visible;
+  }
+  .timetable-slot {
+    height: 72px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .timetable-slot:last-child { border-bottom: none; }
+  .timetable-slot.lunch-slot {
+    background: #FFFDF5;
+  }
+
+  /* 셀에 배치되는 강의 카드 */
+  .tt-cell {
+    position: absolute;
+    left: 3px; right: 3px;
+    border-radius: 5px;
+    padding: 5px 8px;
+    overflow: visible;
+    z-index: 2;
+    cursor: pointer;
+    transition: box-shadow 0.1s;
+    background-clip: padding-box;
+  }
+  .tt-cell:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.14); z-index: 10; }
+  .tt-cell.online  { background: #EFF6FF; border-left: 3px solid var(--online-color); }
+  .tt-cell.offline { background: #ECFDF5; border-left: 3px solid var(--offline-color); }
+  .tt-cell.self    { background: #F5F3FF; border-left: 3px solid var(--self-color); }
+  .tt-cell.exam    { background: var(--exam-bg); border-left: 3px solid var(--exam-color); }
+  .tt-cell.task    { background: #FFFBEB; border-left: 3px solid #F59E0B; }
+  .tt-cell.lunch   { background: #FFFBEB; border-left: 3px solid #F59E0B; }
+
+  .tt-name { font-size: 11px; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
+  .tt-meta { font-size: 9.5px; color: var(--text-secondary); margin-top: 1px; }
+  .tt-badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
+  .tt-badge {
+    font-size: 9.5px; font-weight: 700;
+    padding: 1px 5px; border-radius: 8px;
+  }
+  .tt-badge.exam-b { background: var(--exam-bg); color: var(--exam-color); }
+  .tt-badge.video-b { background: #FEE2E2; color: #991B1B; cursor: pointer; }
+  .tt-badge.video-b:hover { background: #FCA5A5; }
+
+  /* 팝오버 */
+  .tt-popover {
+    position: fixed;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 14px 16px;
+    z-index: 500;
+    min-width: 240px;
+    max-width: 300px;
+    display: none;
+  }
+  .tt-popover.show { display: block; }
+  .tt-pop-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .tt-pop-row { display: flex; gap: 6px; align-items: center; margin-bottom: 5px; font-size: 12px; color: var(--text-secondary); }
+  .tt-pop-row i { color: var(--mobi-orange); font-size: 11px; width: 14px; }
+  .tt-pop-actions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+  /* 편집 팝오버 */
+  .tt-edit-group { margin-bottom: 8px; }
+  .tt-edit-label { font-size: 10.5px; font-weight: 600; color: var(--text-secondary); margin-bottom: 3px; }
+  .tt-edit-input {
+    width: 100%;
+    font-size: 12px;
+    padding: 5px 8px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    outline: none;
+    font-family: inherit;
+    color: var(--text-primary);
+  }
+  .tt-edit-input:focus { border-color: var(--mobi-orange); }
+
+  /* 점심 행 */
+  .timetable-lunch-row {
+    display: contents;
+  }
+  .timetable-lunch-label {
+    background: #FFFDF5;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #B45309;
+  }
+  .timetable-lunch-cell {
+    background: #FFFDF5;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #B45309;
+    font-weight: 600;
+  }
+
+  /* 구 레이아웃 제거 */
+  .day-grid { display: none; }
+  .day-header {
+    background: var(--mobi-dark);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .day-header .day-n { color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 500; }
+  .day-header .day-date { color: #fff; font-size: 13px; font-weight: 700; }
+
+  .day-header-btns {
+    display: flex;
+    gap: 4px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .day-header .day-eval {
+    background: rgba(255,107,43,0.25);
+    border: 1px solid rgba(255,107,43,0.5);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .day-header .day-eval:hover { background: rgba(255,107,43,0.4); }
+  /* timetable head 안 day-eval */
+  .timetable-head-day .day-eval {
+    background: rgba(255,107,43,0.25);
+    border: 1px solid rgba(255,107,43,0.5);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .timetable-head-day .day-eval:hover { background: rgba(255,107,43,0.4); }
+
+  /* 강의평가 완료 체크 */
+  .day-eval-check {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.9);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .day-eval-check.done {
+    background: rgba(5,150,105,0.5);
+    border-color: rgba(5,150,105,0.7);
+    color: #fff;
+  }
+  .day-eval-check:hover { opacity: 0.8; }
+
+  .day-body { padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+
+  /* ── 타임라인 래퍼 ── */
+  .timeline-row {
+    display: flex;
+    gap: 0;
+  }
+  .timeline-left {
+    width: 52px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 8px;
+    padding-top: 9px;
+    position: relative;
+  }
+  .timeline-left::after {
+    content: '';
+    position: absolute;
+    right: 3px;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background: #C0BDB4;
+  }
+  .timeline-time {
+    font-size: 10px;
+    color: #555568;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
+    padding: 0 2px;
+  }
+  .timeline-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    position: absolute;
+    right: 0;
+    top: 12px;
+    z-index: 2;
+  }
+  .timeline-right { flex: 1; min-width: 0; }
+
+  .lecture-item {
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .lecture-item:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+  .lecture-item.online { background: #EFF6FF; border-left: 3px solid var(--online-color); }
+  .lecture-item.offline { background: #ECFDF5; border-left: 3px solid var(--offline-color); }
+  .lecture-item.self { background: #F5F3FF; border-left: 3px solid var(--self-color); }
+  .lecture-item.exam { background: var(--exam-bg); border-left: 3px solid var(--exam-color); }
+  .lecture-item.task { background: #FFFBEB; border-left: 3px solid #F59E0B; }
+
+  .lec-name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+  .lec-meta { font-size: 10.5px; color: var(--text-secondary); margin-top: 2px; }
+
+  .lec-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 5px; }
+  .lec-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+  .lec-tag.online { background: #DBEAFE; color: #1D4ED8; border-left: none; }
+  .lec-tag.offline { background: #D1FAE5; color: #065F46; border-left: none; }
+  .lec-tag.self { background: #EDE9FE; color: #5B21B6; border-left: none; }
+
+  .exam-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--exam-bg);
+    border: 1px solid var(--exam-border);
+    color: var(--exam-color);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+  }
+
+  .lec-links { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  .lec-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10.5px;
+    color: var(--mobi-orange);
+    background: var(--mobi-orange-light);
+    border: 1px solid var(--mobi-orange-border);
+    padding: 2px 7px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .lec-link:hover { background: var(--mobi-orange-border); }
+
+  /* HRD 편집 모드 인풋 */
+  .edit-field {
+    width: 100%;
+    font-size: 11px;
+    padding: 3px 7px;
+    border: 1px dashed var(--mobi-orange);
+    border-radius: 5px;
+    outline: none;
+    color: var(--text-primary);
+    background: rgba(255,107,43,0.04);
+    font-family: inherit;
+    margin-top: 4px;
+  }
+  .edit-field:focus { border-color: var(--mobi-orange); background: white; }
+
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    background: white;
+  }
+  .check-box.checked { background: var(--offline-color); border-color: var(--offline-color); }
+  .check-box.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .check-label { font-size: 11px; color: var(--text-muted); }
+
+  /* 영상 재생 버튼 */
+  .video-play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10.5px;
+    color: #fff;
+    background: #E85D75;
+    border: none;
+    padding: 2px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.15s;
+    font-family: inherit;
+    margin-top: 4px;
+  }
+  .video-play-btn:hover { background: #D0435C; }
+
+  .assign-link-input {
+    flex: 1;
+    font-size: 11px;
+    padding: 3px 7px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    color: var(--text-primary);
+    background: white;
+    min-width: 0;
+  }
+  .assign-link-input:focus { border-color: var(--mobi-orange); }
+  .assign-link-input::placeholder { color: var(--text-muted); }
+
+  /* legend */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  /* ── DASHBOARD PAGE ── */
+  .intern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .intern-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .intern-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .intern-card.marketing::before { background: var(--mobi-orange); }
+  .intern-card.aiax::before { background: var(--online-color); }
+  .intern-card.biz::before { background: var(--self-color); }
+  .intern-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  /* 직무 배지 (아바타 대체) */
+  .intern-job-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .intern-job-badge.marketing { background: var(--mobi-orange-light); color: var(--mobi-orange); }
+  .intern-job-badge.aiax { background: #EFF6FF; color: var(--online-color); }
+  .intern-job-badge.biz { background: #F5F3FF; color: var(--self-color); }
+
+  .intern-name { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .intern-info { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  .intern-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .istat {
+    background: var(--bg-main);
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .istat-val { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+  .istat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+
+  .progress-bar-wrap {
+    background: var(--bg-main);
+    border-radius: 20px;
+    height: 6px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    background: var(--mobi-orange);
+    transition: width 0.3s;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+  }
+  .badge.late { background: #FEF3C7; color: #92400E; }
+  .badge.absent { background: #FEE2E2; color: #991B1B; }
+  .badge.ok { background: #D1FAE5; color: #065F46; }
+
+  /* detail table */
+  .detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .detail-table th {
+    background: var(--bg-main);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 15.6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+    vertical-align: top;
+    font-size: 16.9px;
+  }
+  .detail-table tr:last-child td { border-bottom: none; }
+  .detail-table tr:hover td { background: #FAFAF8; }
+  #detail-tbody tr.row-highlighted td {
+    background: #FFD6C2 !important;
+  }
+  /* 태도 요약 - 줄바꿈 허용, 세로 확장 */
+  .summary-cell {
+    white-space: pre-line;
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    min-width: 260px;
+    max-width: 340px;
+    word-break: keep-all;
+    padding: 12px 16px !important;
+  }
+  /* 학교/경력 - 잘리지 않게 */
+  .school-cell {
+    min-width: 160px;
+    font-size: 12px;
+  }
+  /* 경력 셀 - 1.3배 확대 */
+  .career-cell {
+    font-size: 15.6px;
+    color: var(--text-secondary);
+    min-width: 220px;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title i { color: var(--mobi-orange); font-size: 16px; }
+
+  /* ── RECORD PAGE ── */
+  .record-header-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .record-select {
+    padding: 8px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    outline: none;
+    cursor: pointer;
+  }
+  .record-select:focus { border-color: var(--mobi-orange); }
+
+  /* 인턴별 섹션 */
+  .record-intern-section {
+    margin-bottom: 24px;
+  }
+  .record-intern-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 10px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .record-intern-label i { color: var(--mobi-orange); }
+
+  .record-entries { display: flex; flex-direction: column; gap: 10px; }
+  .record-entry {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: var(--shadow);
+  }
+  .record-entry-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .record-entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .record-author {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--mobi-orange);
+  }
+  .record-date {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .record-content {
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.7;
+    padding: 10px 12px;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    white-space: pre-line;
+  }
+
+  .record-add-area {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .record-add-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+  .form-input {
+    padding: 9px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    background: white;
+    color: var(--text-primary);
+  }
+  .form-input:focus { border-color: var(--mobi-orange); box-shadow: 0 0 0 2px var(--mobi-orange-light); }
+  .form-textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    background: white;
+    color: var(--text-primary);
+    resize: vertical;
+    min-height: 80px;
+    width: 100%;
+    line-height: 1.6;
+  }
+  .form-textarea:focus { border-color: var(--mobi-orange); }
+
+  .btn-primary {
+    background: var(--mobi-orange);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+  .btn-primary:hover { background: #E85A1F; transform: translateY(-1px); }
+  .btn-secondary {
+    background: white;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-secondary:hover { border-color: var(--mobi-orange); color: var(--mobi-orange); }
+
+  /* ── 이력서 업로드 ── */
+  .resume-upload-area {
+    border: 2px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg-main);
+    margin-bottom: 16px;
+  }
+  .resume-upload-area:hover, .resume-upload-area.dragover {
+    border-color: var(--mobi-orange);
+    background: var(--mobi-orange-light);
+  }
+  .resume-upload-area i { font-size: 28px; color: var(--text-muted); margin-bottom: 8px; display: block; }
+  .resume-upload-area p { font-size: 13px; color: var(--text-secondary); }
+  .resume-upload-area small { font-size: 11px; color: var(--text-muted); }
+  .resume-parsing-status {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: none;
+  }
+  .resume-parsing-status.loading { background: #EFF6FF; color: var(--online-color); border: 1px solid #BFDBFE; }
+  .resume-parsing-status.done { background: #ECFDF5; color: var(--offline-color); border: 1px solid #A7F3D0; }
+  .resume-parsing-status.error { background: var(--exam-bg); color: var(--exam-color); border: 1px solid var(--exam-border); }
+
+  /* notification */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--mobi-dark);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 9999;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* scroll */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .chip i { font-size: 11px; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+  }
+  .empty-state i { font-size: 36px; margin-bottom: 10px; display: block; opacity: 0.4; }
+  .empty-state p { font-size: 13px; }
+
+  select.form-input option { font-family: inherit; }
+
+  /* ── 시간표 페이지 전용: 전체 폰트 1.3배 ── */
+  #page-schedule .tt-name { font-size: 14.3px; }
+  #page-schedule .tt-meta { font-size: 12.4px; }
+  #page-schedule .tt-badge { font-size: 12.4px; }
+  #page-schedule .timetable-head-time { font-size: 13.7px; }
+  #page-schedule .timetable-head-day .day-n { font-size: 13px; }
+  #page-schedule .timetable-head-day .day-date { font-size: 16.9px; }
+  #page-schedule .timetable-time-slot { font-size: 13.7px; }
+  #page-schedule .week-badge { font-size: 15.6px; }
+  #page-schedule .week-subtitle { font-size: 16.3px; }
+  #page-schedule .job-tab { font-size: 16.9px; }
+  #page-schedule .hrd-edit-btn { font-size: 16.3px; }
+  #page-schedule .folder-link { font-size: 16.9px; }
+  #page-schedule .schedule-info { font-size: 16.9px; }
+  #page-schedule .day-eval { font-size: 13px !important; }
+  #page-schedule .day-eval-check { font-size: 13px !important; }
+  #page-schedule .legend-item { font-size: 15.6px; }
+  #page-schedule .legend { font-size: 15.6px; }
+  #page-schedule .tt-pop-title { font-size: 16.9px; }
+  #page-schedule .tt-pop-row { font-size: 15.6px; }
+  #page-schedule .lec-link { font-size: 13.7px; }
+  #page-schedule .check-box { width: 20px; height: 20px; }
+  #page-schedule .check-box.checked::after { font-size: 13px; }
+  #page-schedule .check-label { font-size: 14.3px; }
+  #page-schedule .video-play-btn { font-size: 13.7px; }
+  #page-schedule .assign-link-input { font-size: 14.3px; }
+
+  /* ── 영상 뷰어 페이지 ── */
+  .video-viewer-wrap {
+    background: #0D0D1A;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  }
+  .video-viewer-header {
+    background: var(--mobi-dark);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .video-viewer-title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .video-viewer-title i { color: var(--mobi-orange); }
+
+  .video-select-wrap {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .video-day-select {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .video-day-select option { background: var(--mobi-dark); color: #fff; }
+
+  .video-main-area {
+    display: flex;
+    gap: 0;
+    height: 480px;
+  }
+  .video-player-area {
+    flex: 1;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-fake-player {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgba(255,255,255,0.5);
+  }
+  .video-fake-player i { font-size: 56px; opacity: 0.3; }
+  .video-fake-player p { font-size: 13px; }
+  .video-fake-player small { font-size: 11px; opacity: 0.6; }
+
+  /* 실제 유튜브 iframe */
+  .video-iframe-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .video-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .video-progress-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 12px 16px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* 진행 바 */
+  .video-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  .video-progress-fill {
+    height: 100%;
+    background: var(--mobi-orange);
+    border-radius: 10px;
+    transition: width 0.5s;
+  }
+  .video-progress-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+  .video-complete-badge {
+    background: var(--offline-color);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+  }
+  .video-complete-badge.show { display: inline-flex; }
+
+  /* 사이드 강의 목록 */
+  .video-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #111127;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .video-sidebar-header {
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .video-sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+  .video-sidebar-item {
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 4px;
+  }
+  .video-sidebar-item:hover { background: rgba(255,255,255,0.06); }
+  .video-sidebar-item.active { background: rgba(255,107,43,0.15); border: 1px solid rgba(255,107,43,0.25); }
+  .video-sidebar-item-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+  .video-sidebar-item.active .video-sidebar-item-title { color: #FF9469; }
+  .video-sidebar-item-meta {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .video-sidebar-item.completed .video-sidebar-item-title::after {
+    content: ' ✓';
+    color: #6EE7B7;
+    font-size: 11px;
+  }
+
+  /* 컨트롤 바 */
+  .video-controls {
+    background: var(--mobi-dark);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .speed-btns { display: flex; gap: 6px; align-items: center; }
+  .speed-btn {
+    padding: 4px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .speed-btn.active {
+    background: var(--mobi-orange);
+    border-color: var(--mobi-orange);
+    color: #fff;
+  }
+  .speed-btn:hover:not(.active) { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.85); }
+  .speed-label { font-size: 11.5px; color: rgba(255,255,255,0.4); }
+
+  /* 권한 관리 페이지 */
+  .perm-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .perm-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .perm-row:last-child { border-bottom: none; }
+  .perm-user-info { display: flex; align-items: center; gap: 12px; }
+  .perm-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--mobi-orange-light);
+    color: var(--mobi-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .perm-name { font-size: 14px; font-weight: 600; }
+  .perm-sub { font-size: 12px; color: var(--text-muted); }
+  .perm-toggle {
+    display: flex;
+    gap: 6px;
+  }
+  .perm-btn {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border-strong);
+    background: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  /* 인라인 편집 셀 */
+  .editable-row [contenteditable="true"] {
+    border-radius: 4px;
+    padding: 1px 4px;
+    transition: background 0.15s;
+    cursor: text;
+  }
+  .editable-row [contenteditable="true"]:hover {
+    background: rgba(255,107,43,0.08);
+  }
+  .editable-row [contenteditable="true"]:focus {
+    background: rgba(255,107,43,0.12);
+    outline: 1px dashed var(--mobi-orange);
+  }
+
+  .perm-btn.active-hrd {
+    background: var(--mobi-orange);
+    border-color: var(--mobi-orange);
+    color: #fff;
+  }
+  .perm-btn.active-intern {
+    background: var(--online-color);
+    border-color: var(--online-color);
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <i class="fa-solid fa-hexagon-nodes" style="color: var(--mobi-orange);"></i>
+    Mobidays <span>34기 인턴십</span>
+  </div>
+  <a class="nav-tab active" onclick="showPage('schedule')" href="#">
+    <i class="fa-regular fa-calendar-days"></i> 시간표
+  </a>
+  <a class="nav-tab" onclick="showPage('dashboard')" href="#">
+    <i class="fa-solid fa-chart-simple"></i> 인턴 대시보드
+  </a>
+  <a class="nav-tab" onclick="showPage('record')" href="#">
+    <i class="fa-regular fa-clipboard"></i> 인턴 기록표
+  </a>
+  <a class="nav-tab" onclick="showPage('video')" href="#">
+    <i class="fa-solid fa-play-circle"></i> 영상 뷰어
+  </a>
+  <a class="nav-tab hrd-only" onclick="showPage('perm')" href="#" id="perm-tab" style="display:none;">
+    <i class="fa-solid fa-shield-halved"></i> 권한 관리 <span style="font-size:10px;opacity:0.6;margin-left:2px;">CO1</span>
+  </a>
+  <!-- 우측 사용자 배지 -->
+  <div class="nav-user">
+    <span class="nav-user-name" id="nav-username">송유림</span>
+    <span class="nav-role-badge hrd" id="nav-role-badge" onclick="toggleUserRole()" title="클릭하여 역할 전환 (데모)">CO1</span>
+  </div>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<!-- ===== PAGE 1: 시간표 ===== -->
+<div id="page-schedule" class="page active">
+  <div class="page-header">
+    <h1>📅 교육 시간표</h1>
+    <p>34기 인턴십 | 2026년 6월 22일 시작 · 직무별 시간표 선택 후 수강 완료 체크 및 자료 링크를 활용하세요</p>
+  </div>
+
+  <!-- 마스터 폴더 -->
+  <div class="schedule-top">
+    <div class="schedule-top-left">
+      <a href="https://drive.google.com/drive/folders/16EQ3OItXq4Ush58Fu7vaOzztKs-LkA77?usp=drive_link" id="master-folder-link" class="folder-link" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-google-drive"></i> 34기 인턴십 마스터 폴더
+      </a>
+    </div>
+  </div>
+
+  <!-- 범례 -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#3B82F6;"></div> 온라인 강의
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#059669;"></div> 오프라인 강의
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#8B5CF6;"></div> 자료 학습
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#E85D75;"></div>
+      <span style="display:flex;align-items:center;gap:4px;">⭐ 공통시험과목</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#F59E0B;"></div> 과제·제출
+    </div>
+  </div>
+
+  <!-- 직무 탭 + HRD 편집 버튼 -->
+  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+    <div class="job-tabs" style="margin-bottom:0; flex: 1;">
+      <button class="job-tab active" onclick="switchJob('marketing', this)">📣 마케팅</button>
+      <button class="job-tab" onclick="switchJob('aiax', this)">🤖 AI·AX</button>
+      <button class="job-tab" onclick="switchJob('biz', this)">💼 사업기획·전략</button>
+    </div>
+    <button class="hrd-edit-btn hrd-only" id="hrd-edit-toggle" onclick="toggleHrdEdit()" style="display:none;">
+      <i class="fa-solid fa-pen"></i> HRD 편집 모드
+    </button>
+  </div>
+
+  <!-- 시간표 컨텐츠 -->
+  <div id="schedule-content"></div>
+</div>
+
+
+<!-- ===== PAGE 2: 인턴 대시보드 ===== -->
+<div id="page-dashboard" class="page">
+  <div class="page-header">
+    <h1>📊 인턴 대시보드</h1>
+    <p>34기 인턴 데이터 기준 · 교육 수강 현황, 과제 제출, 시험 점수, 태도 요약</p>
+  </div>
+
+  <!-- 인턴 카드 그리드 -->
+  <div class="section-title"><i class="fa-solid fa-users"></i> 인턴 현황</div>
+  <div class="intern-grid" id="intern-cards"></div>
+
+  <!-- 상세 테이블 -->
+  <div class="card">
+    <div class="section-title"><i class="fa-solid fa-table-list"></i> 평가 통합표</div>
+    <div style="overflow-x: auto; max-width:100%;">
+      <div id="table-edit-hint" style="display:none; font-size:11.5px; color:var(--mobi-orange); margin-bottom:8px; padding:6px 10px; background:var(--mobi-orange-light); border-radius:6px; border:1px solid var(--mobi-orange-border);">
+        <i class="fa-solid fa-pen" style="font-size:10px;"></i> CO1 전용 · 셀을 클릭하면 수기 편집 가능합니다
+      </div>
+      <table class="detail-table" style="min-width:1000px;">
+        <thead>
+          <tr>
+            <th style="white-space:nowrap;">이름</th><th style="white-space:nowrap;">직무</th><th style="white-space:nowrap;min-width:130px;">학교</th><th style="white-space:nowrap;min-width:160px;">경력</th><th style="white-space:nowrap;">수강체크율</th><th style="white-space:nowrap;">미니테스트</th>
+            <th style="white-space:nowrap;">공통테스트(40%)</th><th style="white-space:nowrap;">태도평가(5%)</th><th style="white-space:nowrap;">지각/결석</th><th style="white-space:nowrap;min-width:200px;">태도 요약</th>
+          </tr>
+        </thead>
+        <tbody id="detail-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 이력서 업로드 (HRD 전용) - 하단 -->
+  <div class="hrd-only" id="resume-section" style="margin-top:20px; display:none;">
+    <div style="border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; background:var(--bg-card); box-shadow:var(--shadow);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <i class="fa-solid fa-file-import" style="color:var(--mobi-orange);font-size:13px;"></i>
+        <span style="font-size:13px;font-weight:700;color:var(--text-primary);">이력서 파싱 (자동 입력)</span>
+        <span style="font-size:11px;color:var(--text-muted);margin-left:4px;">PDF / DOCX → Claude AI 자동 분석</span>
+      </div>
+      <div class="resume-upload-area" id="resume-drop-zone" style="padding:12px 16px;"
+           onclick="document.getElementById('resume-file-input').click()"
+           ondragover="event.preventDefault(); this.classList.add('dragover')"
+           ondragleave="this.classList.remove('dragover')"
+           ondrop="handleResumeDrop(event)">
+        <i class="fa-solid fa-file-arrow-up" style="font-size:18px;margin-bottom:4px;"></i>
+        <p style="font-size:12px;">클릭하거나 파일을 여기로 드래그 (PDF, DOCX · 최대 10MB)</p>
+      </div>
+      <input type="file" id="resume-file-input" accept=".pdf,.docx,.doc" style="display:none;" onchange="handleResumeFile(this.files[0])">
+      <div class="resume-parsing-status" id="resume-status"></div>
+      <div id="resume-preview" style="display:none;">
+        <div style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:8px;">파싱 결과 미리보기</div>
+        <div id="resume-preview-content" style="background:var(--bg-main); border-radius:var(--radius-sm); padding:12px; font-size:12.5px; line-height:1.8;"></div>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button class="btn-primary" onclick="applyResumeData()"><i class="fa-solid fa-check"></i> 인턴 정보에 적용</button>
+          <button class="btn-secondary" onclick="cancelResumeData()">취소</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PAGE 3: 인턴 기록표 ===== -->
+<div id="page-record" class="page">
+  <div class="page-header">
+    <h1>📋 인턴 기록표</h1>
+    <p>교육 수강 태도, 면담 내용 등을 기록하는 공간입니다 (CO1 전용)</p>
+  </div>
+
+  <!-- 작성자 선택 -->
+  <div class="record-add-area" style="padding:16px 20px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div class="form-group" style="flex:0 0 auto;">
+        <label class="form-label">✍️ 작성자 선택</label>
+        <select class="form-input" id="rec-author-select" onchange="renderRecordInputPanel()" style="min-width:140px;">
+          <option value="">-- 선택 --</option>
+          <option>양봉준</option>
+          <option>구지현</option>
+          <option>송유림</option>
+          <option>안민혁</option>
+          <option>윤지수</option>
+          <option>김한슬</option>
+          <option>이홍은</option>
+          <option>유연승</option>
+        </select>
+      </div>
+      <div style="font-size:12.5px;color:var(--text-muted);padding-top:18px;">작성자를 선택하면 인턴별 기록란이 펼쳐집니다.</div>
+    </div>
+  </div>
+
+  <!-- 인턴별 textarea 입력 패널 -->
+  <div id="record-input-panel" style="display:none;">
+    <div id="record-input-grid"></div>
+    <div style="text-align:center;margin-bottom:28px;">
+      <button class="btn-primary" onclick="saveAllRecords()" style="padding:11px 32px;font-size:14px;">
+        <i class="fa-solid fa-floppy-disk"></i> 전체 저장
+      </button>
+    </div>
+  </div>
+
+  <!-- 필터 + 기록 목록 -->
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+    <div class="section-title" style="margin-bottom: 0;"><i class="fa-solid fa-list-ul"></i> 기록 목록</div>
+    <select class="record-select" id="filter-intern" onchange="renderRecords()">
+      <option value="">전체 인턴</option>
+      <option>정의창</option><option>백호정</option><option>김수연</option>
+      <option>국정현</option><option>최재언</option><option>박예슬</option><option>이동제</option>
+      <option>정원형</option><option>정수빈</option><option>오지원</option><option>최민석</option>
+    </select>
+  </div>
+
+  <div id="record-list"></div>
+</div>
+
+
+<!-- ===== PAGE 4: 영상 뷰어 ===== -->
+<div id="page-video" class="page">
+  <div class="page-header">
+    <h1>▶️ 영상 뷰어</h1>
+    <p>강의 영상을 선택하여 시청하세요 · 재생 70% 이상 시 수강완료 배지 표시</p>
+  </div>
+
+  <div class="video-viewer-wrap">
+    <div class="video-viewer-header">
+      <div class="video-viewer-title">
+        <i class="fa-solid fa-film"></i>
+        <span id="video-current-title">모비데이즈 소개 (대표님 세션)</span>
+      </div>
+      <div class="video-select-wrap">
+        <span style="font-size:12px; color:rgba(255,255,255,0.4);">직무</span>
+        <select class="video-day-select" id="video-job-select" onchange="onVideoJobChange(this.value)">
+          <option value="marketing">📣 마케팅</option>
+          <option value="aiax">🤖 AI·AX</option>
+          <option value="biz">💼 사업기획·전략</option>
+        </select>
+        <span style="font-size:12px; color:rgba(255,255,255,0.4);">일자 선택</span>
+        <select class="video-day-select" id="video-day-select" onchange="loadVideoDay(this.value)">
+          <option value="day1">1일차 - 6/22 (월)</option>
+          <option value="day2">2일차 - 6/23 (화)</option>
+          <option value="day3">3일차 - 6/24 (수)</option>
+          <option value="day4">4일차 - 6/25 (목)</option>
+          <option value="day5">5일차 - 6/26 (금)</option>
+          <option value="day9">9일차 - 6/30 (화)</option>
+          <option value="day11">11일차 - 7/2 (목)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="video-main-area">
+      <!-- 플레이어 -->
+      <div class="video-player-area">
+        <div class="video-fake-player" id="video-placeholder">
+          <i class="fa-solid fa-circle-play"></i>
+          <p>우측 목록에서 강의를 선택하세요</p>
+          <small>배속 조절 최대 2배속 지원</small>
+        </div>
+        <div class="video-iframe-wrap" id="video-iframe-wrap" style="display:none;">
+          <!-- iframe 삽입 영역 (실제 운영 시 src에 영상 URL) -->
+          <div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+            <i class="fa-solid fa-video" style="font-size:40px;color:rgba(255,255,255,0.2);"></i>
+            <p style="font-size:13px;color:rgba(255,255,255,0.4);" id="video-playing-name">재생 중...</p>
+            <small style="font-size:11px;color:rgba(255,255,255,0.25);">실제 영상 URL 연결 시 여기서 재생됩니다</small>
+          </div>
+        </div>
+        <!-- 진행률 오버레이 -->
+        <div class="video-progress-overlay" id="video-progress-overlay" style="display:none;">
+          <div class="video-progress-bar" title="시청 진행률">
+            <div class="video-progress-fill" id="video-progress-fill"></div>
+          </div>
+          <div class="video-progress-label" id="video-progress-label">0%</div>
+          <div class="video-complete-badge" id="video-complete-badge">
+            <i class="fa-solid fa-circle-check"></i> 수강완료
+          </div>
+        </div>
+      </div>
+
+      <!-- 사이드바: 해당 일차 강의 목록 -->
+      <div class="video-sidebar">
+        <div class="video-sidebar-header">강의 목록</div>
+        <div class="video-sidebar-list" id="video-sidebar-list"></div>
+      </div>
+    </div>
+
+    <!-- 컨트롤 -->
+    <div class="video-controls">
+      <span class="speed-label">배속</span>
+      <div class="speed-btns">
+        <button class="speed-btn active" onclick="setSpeed(1, this)">1x</button>
+        <button class="speed-btn" onclick="setSpeed(1.25, this)">1.25x</button>
+        <button class="speed-btn" onclick="setSpeed(1.5, this)">1.5x</button>
+        <button class="speed-btn" onclick="setSpeed(2, this)">2x</button>
+      </div>
+      <div style="margin-left: auto; display:flex; align-items:center; gap:10px;">
+        <span style="font-size:12px; color:rgba(255,255,255,0.4);" id="video-speed-note">배속 변경은 재생 중에 적용됩니다</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PAGE 5: 권한 관리 (CO1 전용) ===== -->
+<div id="page-perm" class="page">
+  <div class="page-header">
+    <h1>🔐 권한 관리</h1>
+    <p>구성원별 접근 권한을 설정합니다 (CO1 전용) · CO1=전체 / Member=시간표+대시보드 조회 / Intern=시간표+영상</p>
+  </div>
+
+  <div class="perm-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-user-shield"></i> 권한 목록</div>
+      <button class="btn-primary" onclick="showAddUserModal()" style="padding:7px 16px;font-size:12.5px;">
+        <i class="fa-solid fa-user-plus"></i> 사람 추가
+      </button>
+    </div>
+
+    <!-- 테이블 헤더 -->
+    <div style="display:grid;grid-template-columns:160px auto 1fr;gap:0;border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:4px;">
+      <div style="font-size:11.5px;font-weight:700;color:var(--text-secondary);padding:0 8px;">이름</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--text-secondary);padding:0 8px;min-width:220px;text-align:center;">권한</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--text-secondary);padding:0 8px;">이메일</div>
+    </div>
+
+    <div id="perm-intern-list"></div>
+  </div>
+
+  <!-- 사람 추가 모달 -->
+  <div id="add-user-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center;">
+    <div style="background:white;border-radius:var(--radius);padding:24px 28px;width:360px;box-shadow:0 8px 40px rgba(0,0,0,0.2);">
+      <div style="font-size:15px;font-weight:700;margin-bottom:16px;">👤 새 구성원 추가</div>
+      <div class="form-group" style="margin-bottom:10px;">
+        <label class="form-label">이름</label>
+        <input type="text" class="form-input" id="new-user-name" placeholder="홍길동">
+      </div>
+      <div class="form-group" style="margin-bottom:10px;">
+        <label class="form-label">이메일</label>
+        <input type="text" class="form-input" id="new-user-email" placeholder="hong@mobidays.com">
+      </div>
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label">권한</label>
+        <select class="form-input" id="new-user-role">
+          <option value="CO1">CO1</option>
+          <option value="Member">Member</option>
+          <option value="Intern" selected>Intern</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-primary" onclick="addNewUser()"><i class="fa-solid fa-plus"></i> 추가</button>
+        <button class="btn-secondary" onclick="closeAddUserModal()">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ──────────────────────────────────────────────
+// DATA
+// ──────────────────────────────────────────────
+const INTERNS = [
+  { name:'정의창', job:'마케팅', type:'marketing', mbti:'ESFP', age:'30세(97년생)', school:'한성대 영어영문학부',
+    career:'퍼포먼스마케팅 매니저 (2025.09~2026.01)', score_mini:70, score_test:59, score_attitude:5,
+    summary:'적극형. 참여도·학습의지 높고 관계 형성 노력도 적극적임. 마케팅 전략 감각 및 업계 이해도(대행사 5개월)로 빠른 온보딩 기대됨. 다만 엑셀 등 실무 툴 숙련도는 보완 필요.',
+    attend_rate: 92, assign_rate: 88 },
+  { name:'백호정', job:'마케팅', type:'marketing', mbti:'ISTJ', age:'32세(95년생)', school:'충북대 정치외교학과',
+    career:'광고기획 운영 (2025.06~2026.02)', score_mini:60, score_test:57, score_attitude:5,
+    summary:'차분한 성실형. 마케팅 경력 기반 이해도와 매체 전략 센스가 있으며 동기 신뢰도 높은 편. AI 활용 적극적이고 학습 태도 안정적임.',
+    attend_rate: 95, assign_rate: 90 },
+  { name:'김수연', job:'마케팅', type:'marketing', mbti:'ENTJ', age:'25세(02년생)', school:'아주대 경영학과',
+    career:'스펙업애드 마케팅 인턴', score_mini:70, score_test:75, score_attitude:5,
+    summary:'적극적 사고형. 교육 참여도 높고 질문 및 대화 주도 성향 있음. K-POP 등 트렌드 관심 높아 콘텐츠 감각 기대됨.',
+    attend_rate: 100, assign_rate: 95 },
+  { name:'국정현', job:'마케팅', type:'marketing', mbti:'ESTJ', age:'27세(00년생)', school:'경희대 미디어학과',
+    career:'KBS 뉴스 FD (2024~현재)', score_mini:80, score_test:52, score_attitude:5,
+    summary:'차분한 학구형. 질문 적극적이고 GA4 등 데이터 영역 관심 높음. 조용하지만 교육 몰입도와 성실성 기반 꾸준함 기대됨.',
+    attend_rate: 96, assign_rate: 92 },
+  { name:'최재언', job:'마케팅', type:'marketing', mbti:'INFP', age:'26세(01년생)', school:'고려대 경영학',
+    career:'카페 마케팅 / BOSCH 산학', score_mini:80, score_test:83, score_attitude:5,
+    summary:'안정적 모범생형. 질문 적극적이고 회사·제도 이해도 높이려는 태도 보임. 체계적 교육 만족도가 높고 조직 적응 태도 긍정적.',
+    attend_rate: 100, assign_rate: 100 },
+  { name:'박예슬', job:'마케팅', type:'marketing', mbti:'ISFP', age:'25세(02년생)', school:'서강대 경영학',
+    career:'BITAmin (2024~2025)', score_mini:50, score_test:69, score_attitude:4,
+    summary:'조용한 데이터형. 교육 집중도 높고 경청 태도 우수하나 참여는 다소 소극적. Python·SQL·R 활용 가능해 데이터 기반 성장 잠재력 있음.',
+    attend_rate: 88, assign_rate: 80 },
+  { name:'이동제', job:'마케팅', type:'marketing', mbti:'ENFJ', age:'30세(97년생)', school:'한국외대 컴퓨터공학부',
+    career:'퀀트 마케팅 학회 / LG Aimers', score_mini:50, score_test:47, score_attitude:5,
+    summary:'차분한 실행형. 컴공 기반 데이터 역량과 AI 활용 관심 높으며 데이터 드리븐 마케팅 지향.',
+    attend_rate: 93, assign_rate: 85 },
+  { name:'정원형', job:'AI·AX', type:'aiax', mbti:'ISTJ', age:'29세(98년생)', school:'한양대 경영학부',
+    career:'AI 심화캠프 1기 (패스트캠퍼스)', score_mini:75, score_test:69, score_attitude:5,
+    summary:'주도적 성장형. 현업 투입 및 레퍼런스 축적에 대한 의지가 강하고 AI/AX 업무 관심 높음.',
+    attend_rate: 97, assign_rate: 90 },
+  { name:'정수빈', job:'AI·AX', type:'aiax', mbti:'ISTP', age:'26세(01년생)', school:'인하대 경제학·통계학',
+    career:'KMAC AI·빅데이터 부서 PA', score_mini:70, score_test:83, score_attitude:4,
+    summary:'독립적 실용형. 털털하고 의사표현 명확하며 이해력 빠른 편. 문제를 발견하면 단순 해결을 넘어 원인을 찾으려는 태도 보임.',
+    attend_rate: 94, assign_rate: 88 },
+  { name:'오지원', job:'사업기획·전략', type:'biz', mbti:'INFP', age:'26세(01년생)', school:'이화여대 사학·경영',
+    career:'크레도스파트너스 경영기획 인턴', score_mini:70, score_test:54, score_attitude:4,
+    summary:'신중한 관망형. 교육 체계에는 높은 만족도 보이나 초기 참여도는 다소 낮은 편. 실무 중심 단계에서 태도 변화 확인 필요.',
+    attend_rate: 85, assign_rate: 78 },
+  { name:'최민석', job:'사업기획·전략', type:'biz', mbti:'ISFP', age:'29세(98년생)', school:'서강대 경영학과',
+    career:'키투웨이 Business Analyst (2023~2024)', score_mini:70, score_test:72, score_attitude:4,
+    summary:'전략지향 성실형. 교육 몰입도와 질문 참여 적극적이며 AICPA 기반으로 기획/전략 적합성 기대됨.',
+    attend_rate: 91, assign_rate: 86 },
+];
+
+// 시간표 데이터 (34기 - 6/22 시작)
+const SCHEDULE = {
+  marketing: {
+    week1: [
+      { day:'1일차', date:'6/22 월', eval:'DAY1 강의평가', lectures:[
+        { time:'10:00~10:30', name:'인턴 프로그램 소개', type:'offline', teacher:'송유림', duration:'0.5h', links:['교안'], check:true, assign:false, hasVideo:false },
+        { time:'10:30~12:00', name:'모비데이즈 소개 (대표님 세션)', type:'online', teacher:'-', duration:'1.5h', links:['영상'], check:true, assign:false, hasVideo:true },
+        { time:'13:00~13:30', name:'대표이사 간담회', type:'offline', teacher:'-', duration:'0.5h', links:[], check:true, assign:false, hasVideo:false },
+        { time:'14:00~16:00', name:'신규입사자 OJT', type:'offline', teacher:'구지현', duration:'2h', links:['자료'], check:true, assign:false, note:'계정세팅/회사소개/제도·복리후생/업무툴/생활TIP', hasVideo:false },
+        { time:'16:00~16:30', name:'조직문화의 이해', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:false, hasVideo:false },
+        { time:'16:30~17:00', name:'기초 비즈니스 매너', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:false, hasVideo:false },
+        { time:'17:00~18:00', name:'시모프프', type:'offline', teacher:'윤지수', duration:'1h', links:['자료'], check:false, assign:false, hasVideo:false },
+        { time:'18:00~18:30', name:'불공정거래 행위 예방 교육', type:'online', teacher:'-', duration:'0.5h', links:[], check:false, assign:true, assignLabel:'K-ITAS 가입 신청서', hasVideo:true },
+      ]},
+      { day:'2일차', date:'6/23 화', eval:'DAY2 강의평가', lectures:[
+        { time:'10:00~11:00', name:'재무 공통 교육', type:'offline', teacher:'김태호', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'11:00~12:00', name:'법무 공통 교육', type:'offline', teacher:'김인서', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'13:30~14:30', name:'퍼포먼스마케팅 기초', type:'self', teacher:'-', duration:'1h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
+        { time:'14:30~16:00', name:'모바일 광고시장', type:'online', teacher:'-', duration:'1.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+        { time:'16:00~17:30', name:'모비그룹 사업의 이해', type:'offline', teacher:'이광수·정성은·안정은', duration:'1.5h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'17:30~19:00', name:'디지털 광고시장의 이해', type:'online', teacher:'-', duration:'1.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+      ]},
+      { day:'3일차', date:'6/24 수', eval:'DAY3 강의평가', lectures:[
+        { time:'10:00~10:30', name:'재무·법무 미니테스트', type:'online', teacher:'-', duration:'0.5h', links:['시험 링크'], check:false, assign:false, hasVideo:false },
+        { time:'11:00~11:30', name:'모바일 광고용어', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
+        { time:'11:30~12:00', name:'미디어의 이해', type:'online', teacher:'-', duration:'0.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+        { time:'13:30~14:00', name:'그로스/퍼널 마케팅/신규 트렌드 전략', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:true, assignLabel:'과제 제출', hasVideo:false },
+        { time:'14:00~15:00', name:'캠페인 업무 플로우', type:'self', teacher:'-', duration:'1h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
+        { time:'15:00~16:00', name:'모비데이즈 상품 이해', type:'online', teacher:'-', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'16:00~17:00', name:'RFP 분석/전략수립', type:'offline', teacher:'김보미', duration:'1h', links:['자료', '실습'], check:false, assign:false, hasVideo:false },
+        { time:'17:00~18:00', name:'PM매체의 이해(기초)', type:'offline', teacher:'박선민', duration:'1h', links:['매체자료', '틱톡자료'], check:false, assign:false, isExam:true, hasVideo:false },
+        { time:'18:00~19:00', name:'스프레드시트 기초', type:'offline', teacher:'윤지수', duration:'1h', links:['실습파일'], check:false, assign:false, hasVideo:false },
+      ]},
+      { day:'4일차', date:'6/25 목', eval:'DAY4 강의평가', lectures:[
+        { time:'10:00~11:00', name:'퍼널별 매체 전략', type:'offline', teacher:'천성화', duration:'1h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
+        { time:'11:00~12:00', name:'데이터 분석 및 전략 설정', type:'offline', teacher:'정지성', duration:'1h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
+        { time:'13:00~14:00', name:'모비데이즈 플랫폼 전략 이해', type:'online', teacher:'-', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'14:30~15:00', name:'미디어믹스의 이해', type:'online', teacher:'-', duration:'0.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+        { time:'15:00~16:30', name:'미디어믹스의 실전', type:'offline', teacher:'박화진', duration:'1.5h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
+        { time:'16:30~17:00', name:'어트리뷰션의 이해', type:'online', teacher:'-', duration:'0.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+        { time:'17:00~18:30', name:'스피치 기본기 완성', type:'online', teacher:'임지연', duration:'1.5h', links:['교안', '영상'], check:false, assign:false, hasVideo:true },
+      ]},
+      { day:'5일차', date:'6/26 금', eval:'DAY5 강의평가', lectures:[
+        { time:'10:00~11:00', name:'공통교육 TEST', type:'exam', teacher:'-', duration:'1h', links:['시험 링크'], check:false, assign:false, hasVideo:false },
+        { time:'11:00~12:00', name:'AI 공통 교육', type:'offline', teacher:'오정은', duration:'1h', links:['교안'], check:false, assign:false, hasVideo:false },
+        { time:'13:30~16:00', name:'구글 애널리틱스 4', type:'offline', teacher:'김민태', duration:'2.5h', links:['교안'], check:false, assign:false, hasVideo:false },
+        { time:'17:00~18:00', name:'1주차 개인 회고', type:'task', teacher:'-', duration:'-', links:['제출폴더'], check:false, assign:true, assignLabel:'회고 파일 링크', hasVideo:false },
+        { time:'18:00~18:30', name:'과제 안내 & 조별 미팅', type:'offline', teacher:'-', duration:'0.5h', links:[], check:false, assign:false, hasVideo:false },
+      ]},
+    ],
+    week2: [
+      { day:'8일차', date:'6/29 월', eval:null, lectures:[
+        { time:'10:00~', name:'RFP 분석 & 데이터 분석 (과제 시작)', type:'task', teacher:'-', duration:'-', links:['과제폴더'], check:false, assign:true, assignLabel:'과제폴더 링크', hasVideo:false },
+        { time:'11:00~12:00', name:'방향성 설정 워크샵', type:'offline', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
+        { time:'13:30~', name:'기획 주제 리서치', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'17:00~', name:'제안서 Part 1 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+      ]},
+      { day:'9일차', date:'6/30 화', eval:'DAY9 강의평가', lectures:[
+        { time:'10:00~', name:'전략 설정 · 팀별 아이디어 구체화', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'14:30~15:00', name:'데이터 분석 실습 / 시나리오 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'15:00~18:00', name:'제안서 작성법의 기초', type:'offline', teacher:'김세웅', duration:'3h', links:['교안', '실습'], check:false, assign:false, hasVideo:true },
+        { time:'18:00~', name:'제안서 Part 2 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+      ]},
+      { day:'10일차', date:'7/1 수', eval:null, lectures:[
+        { time:'10:00~', name:'리서치 내용 보완 / 근거 정리', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'11:00~', name:'제안서 Part 3 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'16:30~', name:'제안서 및 발표 자료 완성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'18:00~', name:'자체 리허설', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+      ]},
+      { day:'11일차', date:'7/2 목', eval:'DAY11 강의평가', lectures:[
+        { time:'10:00~', name:'제안서 및 발표 보완점 개선', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'14:00~17:00', name:'스피치 1:1 집중 코칭', type:'offline', teacher:'임지연', duration:'3h', links:['교안'], check:false, assign:false, hasVideo:true },
+        { time:'17:00~', name:'최종 발표자료 완성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'최종', name:'최종 자료 제출', type:'task', teacher:'-', duration:'-', links:['제출폴더'], check:false, assign:true, assignLabel:'최종파일 링크', hasVideo:false },
+      ]},
+      { day:'12일차', date:'7/3 금', eval:null, lectures:[
+        { time:'10:00~', name:'최종 발표 (2층 라운지)', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'13:00~', name:'모비톡 - 현직자 미니세션', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'14:00~', name:'BR 개인 면담', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'17:00~', name:'장원식 (공통TEST + 발표)', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'18:00~', name:'도서 요약 제출', type:'task', teacher:'-', duration:'-', links:['제출폴더'], check:false, assign:true, assignLabel:'도서파일 링크', hasVideo:false },
+      ]},
+    ]
+  }
+};
+
+SCHEDULE.aiax = JSON.parse(JSON.stringify(SCHEDULE.marketing));
+SCHEDULE.aiax.week1[2].lectures = SCHEDULE.aiax.week1[2].lectures.filter(l=>!['그로스/퍼널 마케팅/신규 트렌드 전략','캠페인 업무 플로우'].includes(l.name));
+SCHEDULE.aiax.week1[2].lectures.splice(3, 0, { time:'13:30~15:00', name:'AI 공통 교육', type:'offline', teacher:'오정은', duration:'1.5h', links:['교안'], check:false, assign:false, hasVideo:false });
+SCHEDULE.aiax.week1[3].lectures = SCHEDULE.aiax.week1[3].lectures.filter(l=>!['퍼널별 매체 전략','데이터 분석 및 전략 설정','미디어믹스의 이해','미디어믹스의 실전','어트리뷰션의 이해'].includes(l.name));
+SCHEDULE.aiax.week1[3].lectures.push({ time:'14:30~16:00', name:'AI·AX 업무의 이해', type:'offline', teacher:'오정은', duration:'1.5h', links:['교안'], check:false, assign:false, hasVideo:false });
+
+SCHEDULE.biz = JSON.parse(JSON.stringify(SCHEDULE.marketing));
+SCHEDULE.biz.week1[3].lectures = SCHEDULE.biz.week1[3].lectures.filter(l=>!['퍼널별 매체 전략','데이터 분석 및 전략 설정','미디어믹스의 이해','미디어믹스의 실전','어트리뷰션의 이해'].includes(l.name));
+SCHEDULE.biz.week1[3].lectures.push({ time:'13:30~15:00', name:'모비인사이드 업무의 이해', type:'offline', teacher:'조예지·한송아', duration:'1.5h', links:['교안'], check:false, assign:false, hasVideo:false });
+SCHEDULE.biz.week1[3].lectures.push({ time:'15:00~16:00', name:'사업개발팀 업무의 이해', type:'offline', teacher:'김우현·김찬슬', duration:'1h', links:['교안'], check:false, assign:false, hasVideo:false });
+
+// 영상 뷰어 일차별 데이터
+const VIDEO_DAYS = {
+  day1: {
+    label: '1일차 - 6/22 (월)',
+    lectures: [
+      { name:'모비데이즈 소개 (대표님 세션)', teacher:'-', duration:'1.5h', type:'online', videoUrl: '' },
+      { name:'불공정거래 행위 예방 교육', teacher:'-', duration:'0.5h', type:'online', videoUrl: '' },
+    ]
+  },
+  day2: {
+    label: '2일차 - 6/23 (화)',
+    lectures: [
+      { name:'재무 공통 교육', teacher:'김태호', duration:'1h', type:'offline', videoUrl: '' },
+      { name:'법무 공통 교육', teacher:'김인서', duration:'1h', type:'offline', videoUrl: '' },
+      { name:'모바일 광고시장', teacher:'-', duration:'1.5h', type:'online', videoUrl: '' },
+      { name:'모비그룹 사업의 이해', teacher:'이광수·정성은·안정은', duration:'1.5h', type:'offline', videoUrl: '' },
+      { name:'디지털 광고시장의 이해', teacher:'-', duration:'1.5h', type:'online', videoUrl: '' },
+    ]
+  },
+  day3: {
+    label: '3일차 - 6/24 (수)',
+    lectures: [
+      { name:'미디어의 이해', teacher:'-', duration:'0.5h', type:'online', videoUrl: '' },
+      { name:'모비데이즈 상품 이해', teacher:'-', duration:'1h', type:'online', videoUrl: '' },
+    ]
+  },
+  day4: {
+    label: '4일차 - 6/25 (목)',
+    lectures: [
+      { name:'모비데이즈 플랫폼 전략 이해', teacher:'-', duration:'1h', type:'online', videoUrl: '' },
+      { name:'미디어믹스의 이해', teacher:'-', duration:'0.5h', type:'online', videoUrl: '' },
+      { name:'어트리뷰션의 이해', teacher:'-', duration:'0.5h', type:'online', videoUrl: '' },
+      { name:'스피치 기본기 완성', teacher:'임지연', duration:'1.5h', type:'online', videoUrl: '' },
+    ]
+  },
+  day5: {
+    label: '5일차 - 6/26 (금)',
+    lectures: []
+  },
+  day9: {
+    label: '9일차 - 6/30 (화)',
+    lectures: [
+      { name:'제안서 작성법의 기초', teacher:'김세웅', duration:'3h', type:'offline', videoUrl: '' },
+    ]
+  },
+  day11: {
+    label: '11일차 - 7/2 (목)',
+    lectures: [
+      { name:'스피치 1:1 집중 코칭', teacher:'임지연', duration:'3h', type:'offline', videoUrl: '' },
+    ]
+  },
+};
+
+// ── 상태 ──
+let currentJob = 'marketing';
+let checkState = {};
+let evalCheckState = {};
+let assignLinks = {};
+let hrdEditMode = false;
+let currentRole = 'hrd'; // 'hrd' | 'intern'
+let currentUser = '송유림';
+let parsedResumeData = null;
+
+// 영상 뷰어 상태
+let currentVideoDay = 'day1';
+let currentVideoIdx = 0;
+let videoProgress = {};
+let videoCompletedSet = new Set();
+let videoSimTimer = null;
+let currentSpeed = 1;
+
+let records = [
+  { intern:'정의창', author:'송유림', date:'2026-03-16', content:'간담회 질문 - 시간이 아깝지않게 하려면 뭐가 있나?/선호하는 리더 스타일\n앞자리 효과도 있지만 교육에 적극적으로 참여함. 엑셀 미숙.\n마케팅 전략에 대한 센스가 있는 것 같음. 개선된다면 현업 실무가 빠르게 늘 것 같음.' },
+  { intern:'백호정', author:'송유림', date:'2026-03-17', content:'RFP분석 실습 작성률 50%미만. 4일차 9시 20분 도착.\n똘똘이 스타일로 보임. 성실하고 매력도 있음. 매체 전략에서 센스와 역량을 보임.' },
+  { intern:'김수연', author:'김연준', date:'2026-03-18', content:'위염으로 두통이 심했으나 지금은 나아졌다고 함.\n과제 실습 기간에 AI 플랫폼을 많이 활용하는 것 같음. 마케팅 경력자로서 교육 콘텐츠가 실제 마케터에게 필요한 내용으로 구성되어 유익했다고 함.' },
+  { intern:'정원형', author:'김연준', date:'2026-03-20', content:'업무 투입 시 어떤 일을 하게 될지, 어떤 개발환경에서 일할 수 있는지에 대한 관심과 질문이 많은 편. 적극적이고 의욕있음.' },
+];
+
+// ──────────────────────────────────────────────
+// 권한 (역할)
+// ──────────────────────────────────────────────
+function applyRole(role) {
+  currentRole = role;
+  const isHrd = role === 'hrd';
+  document.querySelectorAll('.hrd-only').forEach(el => {
+    el.style.display = isHrd ? '' : 'none';
+  });
+  // 권한 탭
+  const permTab = document.getElementById('perm-tab');
+  if (permTab) permTab.style.display = isHrd ? '' : 'none';
+  // 역할 배지 색상
+  const badge = document.getElementById('nav-role-badge');
+  badge.className = 'nav-role-badge ' + (isHrd ? 'hrd' : 'intern');
+  badge.textContent = isHrd ? 'CO1' : '인턴';
+  // 이력서 섹션
+  const resumeSection = document.getElementById('resume-section');
+  if (resumeSection) resumeSection.style.display = isHrd ? '' : 'none';
+}
+
+function toggleUserRole() {
+  // 데모용: HRD ↔ 인턴 전환
+  if (currentRole === 'hrd') {
+    currentUser = '정의창';
+    document.getElementById('nav-username').textContent = currentUser;
+    applyRole('intern');
+    showToast('👤 인턴 보기로 전환했습니다');
+  } else {
+    currentUser = '송유림';
+    document.getElementById('nav-username').textContent = currentUser;
+    applyRole('hrd');
+    showToast('🔐 CO1 모드로 전환했습니다');
+  }
+}
+
+// ──────────────────────────────────────────────
+// HRD 편집 모드
+// ──────────────────────────────────────────────
+function toggleHrdEdit() {
+  hrdEditMode = !hrdEditMode;
+  const btn = document.getElementById('hrd-edit-toggle');
+  if (hrdEditMode) {
+    btn.classList.add('active');
+    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> 편집 완료';
+    showToast('✏️ HRD 편집 모드 활성화 — 링크·강의명을 수정할 수 있습니다');
+  } else {
+    btn.classList.remove('active');
+    btn.innerHTML = '<i class="fa-solid fa-pen"></i> HRD 편집 모드';
+    showToast('✅ 편집 내용이 저장되었습니다');
+  }
+  renderSchedule();
+}
+
+// ──────────────────────────────────────────────
+// SCHEDULE — 시간축 그리드 레이아웃
+// ──────────────────────────────────────────────
+
+// 시간 슬롯 정의 (30분 단위) 10:00~19:00
+const TIME_SLOTS = [
+  '10:00','10:30','11:00','11:30',
+  '12:00','12:30',  // 점심
+  '13:00','13:30','14:00','14:30','15:00','15:30',
+  '16:00','16:30','17:00','17:30','18:00','18:30','19:00'
+];
+const LUNCH_SLOTS = ['12:00','12:30'];
+
+function timeToSlotIndex(timeStr) {
+  // e.g. "10:00" or "10:00~10:30"
+  const t = timeStr.split('~')[0].trim();
+  return TIME_SLOTS.indexOf(t);
+}
+function durationToSlots(timeStr) {
+  // e.g. "10:00~11:30" → 3 slots
+  const parts = timeStr.split('~');
+  if (parts.length < 2) return 1;
+  const [sh, sm] = parts[0].trim().split(':').map(Number);
+  const [eh, em] = parts[1].trim().split(':').map(Number);
+  return ((eh * 60 + em) - (sh * 60 + sm)) / 30;
+}
+
+function switchJob(job, btn) {
+  currentJob = job;
+  document.querySelectorAll('.job-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSchedule();
+}
+
+let activePop = null;
+
+function renderSchedule() {
+  const data = SCHEDULE[currentJob];
+  const container = document.getElementById('schedule-content');
+  let html = '';
+
+  const renderWeek = (weekData, weekLabel, weekNote) => {
+    const wIdx = weekLabel.includes('1') ? 0 : 1;
+    const numDays = weekData.length;
+    // grid: 시간축(70px) + 5개 요일
+    const gridCols = `70px repeat(${numDays}, 1fr)`;
+
+    html += `<div class="week-section">
+      <div class="week-header">
+        <span class="week-badge">${weekLabel}</span>
+        <span class="week-subtitle">${weekNote}</span>
+      </div>
+      <div class="timetable-wrap">
+        <!-- 헤더 행 -->
+        <div class="timetable-head" style="grid-template-columns:${gridCols};">
+          <div class="timetable-head-time">시간</div>`;
+
+    weekData.forEach((day, di) => {
+      const evalDoneKey = `evalDone-${currentJob}-${wIdx}-${di}`;
+      const isEvalDone = evalCheckState[evalDoneKey] || false;
+      html += `<div class="timetable-head-day">
+        <div class="day-n">${day.day}</div>
+        <div class="day-date">${day.date}</div>
+        <div class="day-eval-wrap">`;
+      if (day.eval) {
+        html += `<a href="#" class="day-eval" onclick="return false;" style="font-size:9px;"><i class="fa-solid fa-star" style="font-size:8px;"></i>${day.eval}</a>
+          <span class="day-eval-check ${isEvalDone?'done':''}" onclick="toggleEvalCheck('${evalDoneKey}',this)" style="font-size:9px;">
+            ${isEvalDone ? '<i class="fa-solid fa-check" style="font-size:8px;"></i>평가완료' : '평가완료 체크'}
+          </span>`;
+      }
+      html += `</div></div>`;
+    });
+    html += `</div>`;
+
+    // 바디: 시간축 + 슬롯 컨테이너
+    html += `<div class="timetable-body" style="display:grid;grid-template-columns:${gridCols};">`;
+
+    // 시간축 컬럼
+    html += `<div class="timetable-time-col">`;
+    TIME_SLOTS.forEach(t => {
+      const isLunch = LUNCH_SLOTS.includes(t);
+      html += `<div class="timetable-time-slot" style="${isLunch ? 'color:#B45309;background:#FFFDF5;' : ''}">${t}</div>`;
+    });
+    html += `</div>`;
+
+    // 요일별 컬럼
+    weekData.forEach((day, di) => {
+      html += `<div class="timetable-day-col" id="col-${wIdx}-${di}">`;
+
+      // 빈 슬롯들 렌더
+      TIME_SLOTS.forEach((t, si) => {
+        const isLunch = LUNCH_SLOTS.includes(t);
+        if (isLunch && t === '12:00') {
+          html += `<div class="timetable-slot lunch-slot" style="height:144px;">
+            <div class="tt-cell lunch" style="top:4px;height:136px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;">
+              <span style="font-size:12px;">🍱</span>
+              <span class="tt-name" style="color:#92400E;text-align:center;">웰컴런치</span>
+            </div>
+          </div>`;
+        } else if (isLunch && t === '12:30') {
+          // merged into 12:00
+        } else {
+          html += `<div class="timetable-slot"></div>`;
+        }
+      });
+
+      // 강의 카드 오버레이 (절대 위치)
+      day.lectures.forEach((lec, li) => {
+        const key = `${currentJob}-${wIdx}-${di}-${li}`;
+        const isChecked = checkState[key] || false;
+        const savedLink = assignLinks[key] || '';
+        const startIdx = timeToSlotIndex(lec.time);
+        const slots = durationToSlots(lec.time);
+        if (startIdx < 0) return;
+
+        const slotIdx12 = TIME_SLOTS.indexOf('12:00');
+        let topOffset = startIdx * 72;
+
+        const height = slots * 72 - 4;
+        const typeClass = lec.type || 'online';
+        const expandId = `exp-${wIdx}-${di}-${li}`;
+
+        // 링크 버튼들 (항상 표시) — hasVideo인 경우 '영상' 링크는 영상뷰어 버튼으로 대체
+        const linksHtml = hrdEditMode
+          ? (lec.links || []).map((lnk, lnkIdx) =>
+              `<input class="tt-edit-input" value="${lnk}" placeholder="링크명"
+                 onchange="updateLectureLink('${currentJob}',${wIdx},${di},${li},${lnkIdx},this.value)"
+                 onclick="event.stopPropagation();" style="margin-bottom:4px;">`
+            ).join('')
+          : (lec.links || []).map(lnk => {
+              const isVideo = lnk.includes('영상');
+              const isExamLink = lnk.includes('시험');
+              let icon = 'fa-link';
+              let style = '';
+              if (isVideo && lec.hasVideo) {
+                // 영상링크는 영상뷰어 버튼으로 통합
+                return `<button class="video-play-btn" onclick="event.stopPropagation();openVideoFromSchedule('${lec.name}')">▶ 영상 보기</button>`;
+              }
+              if (isExamLink) { icon = 'fa-file-pen'; style = 'color:#E85D75;background:#FFF0F3;border-color:#F9BFCC;'; }
+              return `<a href="#" class="lec-link" onclick="event.stopPropagation();return false;" style="font-size:10.5px;${style}"><i class="fa-solid ${icon}" style="font-size:9px;"></i>${lnk}</a>`;
+            }).join('');
+
+        // hasVideo지만 links에 '영상'이 없는 경우 대비 별도 버튼
+        const hasVideoLink = (lec.links || []).some(l => l.includes('영상'));
+        const videoBtn = (lec.hasVideo && !hasVideoLink)
+          ? `<button class="video-play-btn" onclick="event.stopPropagation();openVideoFromSchedule('${lec.name}')">▶ 영상 보기</button>`
+          : '';
+
+        // 수강완료 체크
+        const checkRow = `<div class="check-row" style="width:100%;" onclick="event.stopPropagation();">
+          <div class="check-box ${isChecked?'checked':''}" id="chk-${key}" onclick="toggleCheckKey('${key}')" title="수강 완료" style="flex-shrink:0;${lec.hasVideo && !isChecked ? 'opacity:0.5;' : ''}"></div>
+          <span class="check-label">${isChecked ? '✅ 수강완료' : '수강 완료'}</span>
+        </div>`;
+
+        // 과제 제출 링크 입력
+        const assignRow = lec.assign ? `<div style="width:100%;margin-top:2px;display:flex;gap:5px;align-items:center;" onclick="event.stopPropagation();">
+          <i class="fa-solid fa-paperclip" style="color:var(--text-muted);font-size:10px;flex-shrink:0;"></i>
+          <input type="text" class="assign-link-input"
+            placeholder="${lec.assignLabel || '제출 링크'}"
+            value="${savedLink}"
+            onchange="saveAssignLink('${key}',this.value)"
+            onclick="event.stopPropagation();" style="flex:1;font-size:11px;">
+        </div>` : '';
+
+        // 공통시험 배지
+        const examBadge = lec.isExam
+          ? `<span class="lec-tag" style="background:var(--exam-bg);color:var(--exam-color);border:1px solid var(--exam-border);margin-top:3px;display:inline-flex;align-items:center;gap:3px;"><i class="fa-solid fa-star" style="font-size:9px;"></i>공통시험과목</span>`
+          : '';
+
+        const nameField = hrdEditMode
+          ? `<input class="tt-edit-input" value="${lec.name}"
+               onchange="updateLectureName('${currentJob}',${wIdx},${di},${li},this.value)"
+               onclick="event.stopPropagation();" style="margin-bottom:4px;font-size:12px;">`
+          : `<div class="tt-name" style="flex:1;">${lec.name}</div>`;
+
+        // HRD 편집 모드 추가 필드
+        const hrdFields = hrdEditMode ? `
+          <div class="tt-edit-group" style="margin-top:6px;">
+            <div class="tt-edit-label">시간</div>
+            <input class="tt-edit-input" value="${lec.time}"
+              onchange="updateLectureTime('${currentJob}',${wIdx},${di},${li},this.value)"
+              onclick="event.stopPropagation();" placeholder="10:00~11:00" style="margin-bottom:4px;">
+          </div>
+          <div class="tt-edit-group">
+            <div class="tt-edit-label">요일 이동</div>
+            <select class="tt-edit-input" onchange="moveLectureDay('${currentJob}',${wIdx},${di},${li},this.value)" onclick="event.stopPropagation();">
+              ${weekData.map((d,ddd)=>`<option value="${ddd}" ${ddd===di?'selected':''}>${d.day} (${d.date})</option>`).join('')}
+            </select>
+          </div>
+          ${linksHtml ? `<div class="tt-edit-group" style="margin-top:4px;"><div class="tt-edit-label">링크</div>${linksHtml}</div>` : ''}
+        ` : '';
+
+        const startTimeLabel = lec.time && lec.time !== '최종'
+          ? `<div style="font-size:9.5px;font-weight:600;color:var(--text-muted);margin-bottom:2px;letter-spacing:0.2px;">${lec.time.split('~')[0]}</div>`
+          : '';
+
+        html += `<div class="tt-cell ${typeClass}"
+  id="${expandId}"
+  style="top:${topOffset+2}px;min-height:${height}px;height:auto;overflow:visible;z-index:2;"
+  title="${lec.name}">
+  ${startTimeLabel}
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:2px;">
+    ${nameField}
+    <span style="font-size:10px;color:var(--text-muted);flex-shrink:0;margin-top:1px;">${lec.duration}</span>
+  </div>
+  ${lec.teacher && lec.teacher !== '-' ? `<div class="tt-meta">${lec.teacher}</div>` : ''}
+  <div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:3px;align-items:center;">
+    ${examBadge}
+    ${linksHtml && !hrdEditMode ? linksHtml : ''}
+    ${videoBtn}
+    ${checkRow}
+    ${assignRow}
+    ${hrdFields}
+  </div>
+</div>`;
+      });
+
+      html += `</div>`; // timetable-day-col
+    });
+
+    html += `</div></div></div>`; // timetable-body, timetable-wrap, week-section
+  };
+
+  renderWeek(data.week1, 'Week 1', '6/22(월) ~ 6/26(금) · 공통 + 직무별 교육');
+  renderWeek(data.week2, 'Week 2', '6/29(월) ~ 7/3(금) · 과제 수행 및 최종 발표');
+
+  container.innerHTML = html;
+
+  // 팝오버 외부 클릭 닫기
+  if (!window._popHandlerSet) {
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.tt-expandable').forEach(c => {
+        const d = c.querySelector('.tt-cell-detail');
+        if (d) d.style.display = 'none';
+        c.style.height = c.dataset.origHeight || '';
+        c.style.zIndex = '';
+        c.style.overflow = 'hidden';
+      });
+    });
+    window._popHandlerSet = true;
+  }
+}
+
+function toggleCellExpand(e, id) {
+  e.stopPropagation();
+  const cell = document.getElementById(id);
+  if (!cell) return;
+  const detail = cell.querySelector('.tt-cell-detail');
+  if (!detail) return;
+  const isOpen = detail.style.display !== 'none';
+  // 다른 열린 카드 닫기
+  document.querySelectorAll('.tt-expandable').forEach(c => {
+    if (c.id !== id) {
+      const d = c.querySelector('.tt-cell-detail');
+      if (d) d.style.display = 'none';
+      c.style.height = c.dataset.origHeight || '';
+      c.style.zIndex = '';
+      c.style.overflow = 'hidden';
+    }
+  });
+  if (isOpen) {
+    detail.style.display = 'none';
+    cell.style.height = cell.dataset.origHeight || '';
+    cell.style.zIndex = '';
+    cell.style.overflow = 'hidden';
+  } else {
+    if (!cell.dataset.origHeight) cell.dataset.origHeight = cell.style.height;
+    detail.style.display = 'block';
+    cell.style.height = 'auto';
+    cell.style.minHeight = cell.dataset.origHeight || '48px';
+    cell.style.zIndex = '10';
+    cell.style.overflow = 'visible';
+  }
+}
+
+function openPop(e, id) {
+  // 팝오버 사용 안 함 (인라인 확장으로 대체)
+}
+
+
+
+function toggleCheckKey(key) {
+  // 영상 강의인지 확인 (hasVideo 체크)
+  const parts = key.split('-'); // e.g. "marketing-0-0-2"
+  if (parts.length === 4) {
+    const [job, wIdx, di, li] = parts;
+    const wKey = wIdx === '0' ? 'week1' : 'week2';
+    const lec = SCHEDULE[job]?.[wKey]?.[parseInt(di)]?.lectures?.[parseInt(li)];
+    if (lec && lec.hasVideo) {
+      // 영상 진행률 확인 (VIDEO_DAYS 기준으로 dayKey 찾기)
+      const videoKey = findVideoProgressKey(lec.name);
+      const progress = videoKey ? (videoProgress[videoKey] || 0) : 0;
+      if (progress < 70) {
+        showToast('📹 영상을 70% 이상 수강 후 체크할 수 있습니다');
+        return;
+      }
+    }
+  }
+  checkState[key] = !checkState[key];
+  // DOM 체크박스 업데이트
+  const cb = document.getElementById('chk-' + key);
+  if (cb) cb.classList.toggle('checked', checkState[key]);
+  showToast(checkState[key] ? '✅ 수강 완료로 표시했습니다' : '수강 완료 체크 해제');
+  renderSchedule();
+}
+
+function findVideoProgressKey(lecName) {
+  for (const [dayKey, dayData] of Object.entries(VIDEO_DAYS)) {
+    const idx = dayData.lectures.findIndex(l => l.name === lecName);
+    if (idx !== -1) return `${dayKey}-${idx}`;
+  }
+  return null;
+}
+
+function updateLectureName(job, wIdx, di, li, val) {
+  const wKey = wIdx === 0 ? 'week1' : 'week2';
+  SCHEDULE[job][wKey][di].lectures[li].name = val;
+}
+function updateLectureLink(job, wIdx, di, li, lnkIdx, val) {
+  const wKey = wIdx === 0 ? 'week1' : 'week2';
+  SCHEDULE[job][wKey][di].lectures[li].links[lnkIdx] = val;
+}
+function updateLectureTime(job, wIdx, di, li, val) {
+  const wKey = wIdx === 0 ? 'week1' : 'week2';
+  SCHEDULE[job][wKey][di].lectures[li].time = val;
+  showToast('⏰ 시간이 변경됐습니다 (저장 후 새로고침)');
+}
+function moveLectureDay(job, wIdx, fromDi, li, toDiStr) {
+  const wKey = wIdx === 0 ? 'week1' : 'week2';
+  const toDi = parseInt(toDiStr);
+  if (toDi === fromDi) return;
+  const lec = SCHEDULE[job][wKey][fromDi].lectures.splice(li, 1)[0];
+  SCHEDULE[job][wKey][toDi].lectures.push(lec);
+  showToast(`✅ 강의가 이동됐습니다`);
+  renderSchedule();
+}
+
+function toggleCheck(key, el) {
+  checkState[key] = !checkState[key];
+  el.classList.toggle('checked', checkState[key]);
+  const label = el.nextElementSibling;
+  if (label) label.textContent = checkState[key] ? '✅ 수강완료' : '수강 완료';
+  showToast(checkState[key] ? '✅ 수강 완료로 표시했습니다' : '수강 완료 체크를 해제했습니다');
+}
+
+function toggleEvalCheck(key, el) {
+  evalCheckState[key] = !evalCheckState[key];
+  el.classList.toggle('done', evalCheckState[key]);
+  el.innerHTML = evalCheckState[key]
+    ? '<i class="fa-solid fa-check" style="font-size:9px;"></i>평가완료'
+    : '평가완료 체크';
+  showToast(evalCheckState[key] ? '✅ 강의평가 완료 표시했습니다' : '강의평가 완료 해제했습니다');
+}
+
+function saveAssignLink(key, val) {
+  assignLinks[key] = val;
+  showToast('📎 링크가 저장되었습니다');
+}
+
+// ──────────────────────────────────────────────
+// DASHBOARD
+// ──────────────────────────────────────────────
+function renderDashboard() {
+  const grid = document.getElementById('intern-cards');
+  grid.innerHTML = INTERNS.map((intern, idx) => `
+    <div class="intern-card ${intern.type}" onclick="highlightTableRow(${idx})">
+      <div class="intern-job-badge ${intern.type}">${intern.job}</div>
+      <div class="intern-name">${intern.name}</div>
+      <div class="intern-info">${intern.mbti} · ${intern.age}</div>
+      <div class="intern-stats">
+        <div class="istat">
+          <div class="istat-val">${intern.attend_rate}%</div>
+          <div class="istat-label">수강체크율</div>
+        </div>
+        <div class="istat">
+          <div class="istat-val">${intern.assign_rate}%</div>
+          <div class="istat-label">과제제출</div>
+        </div>
+        <div class="istat">
+          <div class="istat-val">${intern.score_mini}<span style="font-size:11px;font-weight:500;">점</span></div>
+          <div class="istat-label">미니테스트</div>
+        </div>
+        <div class="istat">
+          <div class="istat-val">${intern.score_test}<span style="font-size:11px;font-weight:500;">점</span></div>
+          <div class="istat-label">공통테스트</div>
+        </div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:${intern.attend_rate}%"></div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:5px; text-align:right;">수강체크율 ${intern.attend_rate}%</div>
+    </div>
+  `).join('');
+
+  const jobBadgeHTML = (intern) => {
+    const cls = intern.type;
+    return `<span class="intern-job-badge ${cls}" style="font-size:10.5px;padding:2px 8px;margin:0;">${intern.job}</span>`;
+  };
+
+  const tbody = document.getElementById('detail-tbody');
+  tbody.innerHTML = INTERNS.map((intern, idx) => {
+    const editable = currentRole === 'hrd';
+    const editAttr = editable ? 'contenteditable="true" style="outline:none;min-width:20px;"' : '';
+    const editCellStyle = editable ? 'background:rgba(255,107,43,0.03);' : '';
+    return `
+    <tr id="dash-row-${idx}" ${editable ? 'class="editable-row"' : ''}>
+      <td style="white-space:nowrap;"><strong ${editAttr} data-field="name" data-idx="${idx}" onblur="updateInternField(${idx},'name',this.textContent)">${intern.name}</strong></td>
+      <td style="white-space:nowrap;">${jobBadgeHTML(intern)}</td>
+      <td style="white-space:nowrap;${editCellStyle}" ${editAttr} data-field="school" data-idx="${idx}" onblur="updateInternField(${idx},'school',this.textContent)">${intern.school}</td>
+      <td style="white-space:nowrap;font-size:15.6px;color:var(--text-secondary);${editCellStyle}" ${editAttr} data-field="career" data-idx="${idx}" onblur="updateInternField(${idx},'career',this.textContent)">${intern.career}</td>
+      <td style="white-space:nowrap;">
+        <span ${editAttr} data-field="attend_rate" data-idx="${idx}" onblur="updateInternField(${idx},'attend_rate',this.textContent)">${intern.attend_rate}%</span>
+      </td>
+      <td style="white-space:nowrap;"><span ${editAttr} data-field="score_mini" data-idx="${idx}" onblur="updateInternField(${idx},'score_mini',this.textContent)">${intern.score_mini}</span>점</td>
+      <td style="white-space:nowrap;"><span ${editAttr} data-field="score_test" data-idx="${idx}" onblur="updateInternField(${idx},'score_test',this.textContent)">${intern.score_test}</span>점</td>
+      <td style="white-space:nowrap;"><span ${editAttr} data-field="score_attitude" data-idx="${idx}" onblur="updateInternField(${idx},'score_attitude',this.textContent)">${intern.score_attitude}</span>/5</td>
+      <td style="white-space:nowrap;"><span class="badge ok"><i class="fa-solid fa-circle-check" style="font-size:10px;"></i> 정상</span></td>
+      <td class="summary-cell" ${editAttr} data-field="summary" data-idx="${idx}" onblur="updateInternField(${idx},'summary',this.textContent)" style="${editCellStyle}">${intern.summary}</td>
+    </tr>
+  `}).join('');
+
+  // CO1 편집 모드 힌트
+  if (currentRole === 'hrd') {
+    const hint = document.getElementById('table-edit-hint');
+    if (hint) hint.style.display = '';
+  }
+}
+
+function highlightTableRow(idx) {
+  // 기존 하이라이트 제거
+  document.querySelectorAll('#detail-tbody tr').forEach(tr => {
+    tr.classList.remove('row-highlighted');
+    tr.style.outline = '';
+  });
+  const row = document.getElementById('dash-row-' + idx);
+  if (!row) return;
+  row.classList.add('row-highlighted');
+  row.style.outline = '2px solid #FF6B2B';
+  row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function updateInternField(idx, field, val) {
+  val = val.trim();
+  if (field === 'attend_rate' || field === 'score_mini' || field === 'score_test' || field === 'score_attitude') {
+    const num = parseFloat(val);
+    if (!isNaN(num)) {
+      INTERNS[idx][field] = num;
+      // 수강률 바 업데이트
+      if (field === 'attend_rate') {
+        const bar = document.getElementById('bar-attend-' + idx);
+        if (bar) bar.style.width = Math.min(100, num) + '%';
+      }
+    }
+  } else {
+    INTERNS[idx][field] = val;
+  }
+  showToast('✅ 수정됐습니다');
+}
+
+// ──────────────────────────────────────────────
+// RECORD
+// ──────────────────────────────────────────────
+const INTERN_NAMES_ALL = ['정의창','백호정','김수연','국정현','최재언','박예슬','이동제','정원형','정수빈','오지원','최민석'];
+
+function renderRecordInputPanel() {
+  const author = document.getElementById('rec-author-select').value;
+  const panel = document.getElementById('record-input-panel');
+  const grid = document.getElementById('record-input-grid');
+  if (!author) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+
+  const jobBadgeForName = (name) => {
+    const intern = INTERNS.find(i => i.name === name);
+    if (!intern) return '';
+    return `<span class="intern-job-badge ${intern.type}" style="font-size:10px;padding:2px 7px;margin:0;">${intern.job}</span>`;
+  };
+
+  grid.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:20px;">` +
+    INTERN_NAMES_ALL.map(name => `
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);">
+        <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+          <i class="fa-solid fa-user" style="color:var(--mobi-orange);font-size:12px;"></i>${name}${jobBadgeForName(name)}
+        </div>
+        <textarea class="form-textarea" id="rec-ta-${name}" placeholder="${name}에 대한 기록 (교육 태도, 면담 내용, 특이사항 등)..." style="min-height:90px;font-size:12.5px;"></textarea>
+      </div>
+    `).join('') + `</div>`;
+}
+
+function saveAllRecords() {
+  const author = document.getElementById('rec-author-select').value;
+  if (!author) { showToast('⚠️ 작성자를 먼저 선택해주세요'); return; }
+  const today = new Date().toISOString().split('T')[0];
+  let saved = 0;
+  INTERN_NAMES_ALL.forEach(name => {
+    const ta = document.getElementById('rec-ta-' + name);
+    if (ta && ta.value.trim()) {
+      records.unshift({ intern: name, author, date: today, content: ta.value.trim() });
+      ta.value = '';
+      saved++;
+    }
+  });
+  if (saved === 0) { showToast('⚠️ 입력된 내용이 없습니다'); return; }
+  renderRecords();
+  showToast(`✅ ${saved}건의 기록이 저장되었습니다`);
+}
+function renderRecords() {
+  const filterIntern = document.getElementById('filter-intern').value;
+  let filtered = records.filter(r => {
+    if (filterIntern && r.intern !== filterIntern) return false;
+    return true;
+  });
+
+  const list = document.getElementById('record-list');
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state"><i class="fa-regular fa-folder-open"></i><p>기록이 없습니다</p></div>`;
+    return;
+  }
+
+  // 인턴별 섹션 분리
+  const internNames = INTERNS.map(i => i.name);
+  const grouped = {};
+  filtered.forEach(r => {
+    if (!grouped[r.intern]) grouped[r.intern] = [];
+    grouped[r.intern].push(r);
+  });
+
+  let html = '';
+  const order = filterIntern ? [filterIntern] : internNames.filter(n => grouped[n]);
+  order.forEach(name => {
+    if (!grouped[name]) return;
+    html += `<div class="record-intern-section">
+      <div class="record-intern-label"><i class="fa-solid fa-user"></i>${name}</div>
+      <div class="record-entries">`;
+    grouped[name].forEach((r, i) => {
+      const globalIdx = records.indexOf(r);
+      html += `<div class="record-entry">
+        <div class="record-entry-header">
+          <div class="record-entry-meta">
+            <span class="record-author">${r.author}</span>
+            <span class="record-date">${r.date}</span>
+          </div>
+          <button class="btn-secondary" style="padding:5px 10px; font-size:12px;" onclick="deleteRecord(${globalIdx})">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+        <div class="record-content">${r.content}</div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  list.innerHTML = html;
+}
+
+function deleteRecord(realIdx) {
+  if (!confirm('이 기록을 삭제하시겠습니까?')) return;
+  records.splice(realIdx, 1);
+  renderRecords();
+  showToast('🗑️ 기록이 삭제되었습니다');
+}
+
+// ──────────────────────────────────────────────
+// 영상 뷰어
+// ──────────────────────────────────────────────
+let currentVideoJob = 'marketing';
+
+function onVideoJobChange(job) {
+  currentVideoJob = job;
+  // 직무 탭도 함께 동기화
+  currentJob = job;
+  document.querySelectorAll('.job-tab').forEach(b => {
+    const jobMap = {'marketing':'마케팅','aiax':'AI·AX','biz':'사업기획·전략'};
+    b.classList.toggle('active', b.textContent.includes(jobMap[job]));
+  });
+  updateVideoJobDayOptions();
+}
+
+function updateVideoJobDayOptions() {
+  const sel = document.getElementById('video-day-select');
+  if (!sel) return;
+  // 직무별 영상이 있는 일자만 필터링 (VIDEO_DAYS는 공통이지만 직무 연동 표시)
+  const allDays = [
+    {key:'day1', label:'1일차 - 6/22 (월)'},
+    {key:'day2', label:'2일차 - 6/23 (화)'},
+    {key:'day3', label:'3일차 - 6/24 (수)'},
+    {key:'day4', label:'4일차 - 6/25 (목)'},
+    {key:'day5', label:'5일차 - 6/26 (금)'},
+    {key:'day9', label:'9일차 - 6/30 (화)'},
+    {key:'day11', label:'11일차 - 7/2 (목)'},
+  ];
+  sel.innerHTML = allDays.map(d => `<option value="${d.key}">${d.label}</option>`).join('');
+  sel.value = 'day1';
+  loadVideoDay('day1');
+}
+
+function loadVideoDay(dayKey) {
+  currentVideoDay = dayKey;
+  currentVideoIdx = -1;
+  const dayData = VIDEO_DAYS[dayKey];
+
+  // 사이드바 목록 렌더
+  const sidebar = document.getElementById('video-sidebar-list');
+  if (!dayData || dayData.lectures.length === 0) {
+    sidebar.innerHTML = `<div style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);font-size:12px;">해당 일차에 영상 강의가 없습니다</div>`;
+    document.getElementById('video-placeholder').style.display = 'flex';
+    document.getElementById('video-iframe-wrap').style.display = 'none';
+    document.getElementById('video-progress-overlay').style.display = 'none';
+    return;
+  }
+
+  sidebar.innerHTML = dayData.lectures.map((lec, idx) => {
+    const vKey = `${dayKey}-${idx}`;
+    const isDone = videoCompletedSet.has(vKey);
+    return `<div class="video-sidebar-item ${isDone ? 'completed' : ''}" id="vsitem-${idx}" onclick="selectVideo(${idx})">
+      <div class="video-sidebar-item-title">${lec.name}</div>
+      <div class="video-sidebar-item-meta">
+        <span>${lec.teacher !== '-' ? lec.teacher : ''}</span>
+        <span>${lec.duration}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  // 첫 번째 자동 선택
+  selectVideo(0);
+}
+
+function selectVideo(idx) {
+  const dayData = VIDEO_DAYS[currentVideoDay];
+  if (!dayData || !dayData.lectures[idx]) return;
+  currentVideoIdx = idx;
+  const lec = dayData.lectures[idx];
+
+  // 타이머 초기화
+  if (videoSimTimer) clearInterval(videoSimTimer);
+
+  // 사이드바 active
+  document.querySelectorAll('.video-sidebar-item').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+
+  // 제목 업데이트
+  document.getElementById('video-current-title').textContent = lec.name;
+  document.getElementById('video-playing-name').textContent = lec.name + ' 재생 중...';
+
+  // 플레이어 전환
+  document.getElementById('video-placeholder').style.display = 'none';
+  document.getElementById('video-iframe-wrap').style.display = 'block';
+  document.getElementById('video-progress-overlay').style.display = 'flex';
+
+  // 진행률 복원 (이어보기)
+  const vKey = `${currentVideoDay}-${idx}`;
+  const savedProgress = videoProgress[vKey] || 0;
+  updateProgressUI(savedProgress, vKey);
+  if (savedProgress > 0 && savedProgress < 100) {
+    showToast(`▶ 이어보기: ${Math.round(savedProgress)}% 지점부터 재생합니다`);
+  }
+
+  // 진행률 시뮬레이션 (실제 영상 URL 없을 때 대체)
+  if (!lec.videoUrl) {
+    let prog = savedProgress;
+    videoSimTimer = setInterval(() => {
+      prog = Math.min(prog + (currentSpeed * 0.5), 100);
+      videoProgress[vKey] = prog;
+      updateProgressUI(prog, vKey);
+      if (prog >= 100) clearInterval(videoSimTimer);
+    }, 1000);
+  }
+}
+
+function updateProgressUI(prog, vKey) {
+  document.getElementById('video-progress-fill').style.width = prog + '%';
+  document.getElementById('video-progress-label').textContent = Math.round(prog) + '%';
+
+  const badge = document.getElementById('video-complete-badge');
+  if (prog >= 70) {
+    badge.classList.add('show');
+  }
+}
+
+function setSpeed(speed, btn) {
+  currentSpeed = speed;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  showToast(`▶ 배속 ${speed}x 설정`);
+}
+
+function openVideoFromSchedule(lecName) {
+  // 시간표에서 영상 보기 클릭 시 뷰어 페이지로 이동 후 해당 강의 선택
+  showPage('video');
+  // 모든 일차에서 해당 강의 찾기
+  for (const [dayKey, dayData] of Object.entries(VIDEO_DAYS)) {
+    const idx = dayData.lectures.findIndex(l => l.name === lecName);
+    if (idx !== -1) {
+      document.getElementById('video-day-select').value = dayKey;
+      loadVideoDay(dayKey);
+      selectVideo(idx);
+      return;
+    }
+  }
+  showToast('📹 해당 영상을 뷰어에서 찾을 수 없습니다');
+}
+
+// ──────────────────────────────────────────────
+// 이력서 파싱 (Claude API)
+// ──────────────────────────────────────────────
+function handleResumeDrop(event) {
+  event.preventDefault();
+  document.getElementById('resume-drop-zone').classList.remove('dragover');
+  const file = event.dataTransfer.files[0];
+  if (file) handleResumeFile(file);
+}
+
+async function handleResumeFile(file) {
+  if (!file) return;
+  const allowed = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
+  if (!allowed.includes(file.type) && !file.name.endsWith('.pdf') && !file.name.endsWith('.docx') && !file.name.endsWith('.doc')) {
+    showStatus('error', '⚠️ PDF 또는 Word 파일만 지원합니다');
+    return;
+  }
+  showStatus('loading', `⏳ "${file.name}" 파싱 중... Claude AI가 이력서를 분석하고 있습니다`);
+
+  try {
+    // 파일을 base64로 변환
+    const base64 = await fileToBase64(file);
+    const isPdf = file.type === 'application/pdf' || file.name.endsWith('.pdf');
+    const mediaType = isPdf ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+
+    const messages = isPdf ? [
+      {
+        role: 'user',
+        content: [
+          { type: 'document', source: { type: 'base64', media_type: mediaType, data: base64 } },
+          { type: 'text', text: `이 이력서 문서에서 다음 정보를 추출하여 JSON으로만 응답해주세요 (마크다운 없이 순수 JSON):
+{
+  "name": "이름",
+  "school": "최종학력 (학교명 + 전공)",
+  "career": "주요 경력 (최신순 1~2개, 짧게)",
+  "mbti": "MBTI (없으면 빈 문자열)",
+  "age": "나이 또는 생년 (없으면 빈 문자열)",
+  "job": "지원 직무 추정 (마케팅/AI·AX/사업기획·전략 중 하나)",
+  "summary": "핵심 역량 및 특징 2~3문장 요약"
+}` }
+        ]
+      }
+    ] : [
+      { role: 'user', content: `이력서 내용에서 이름, 학력, 경력, MBTI, 나이, 직무, 역량 요약을 JSON으로 추출해주세요. 파일이 DOCX 형식이라 텍스트로 직접 붙여넣기가 필요합니다. JSON 형식:\n{"name":"","school":"","career":"","mbti":"","age":"","job":"마케팅","summary":""}` }
+    ];
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages
+      })
+    });
+
+    const data = await response.json();
+    const rawText = data.content?.map(c => c.text || '').join('');
+
+    // JSON 파싱
+    const clean = rawText.replace(/```json|```/g, '').trim();
+    parsedResumeData = JSON.parse(clean);
+
+    showStatus('done', '✅ 이력서 파싱 완료! 아래 내용을 확인하고 적용해주세요.');
+    showResumePreview(parsedResumeData);
+
+  } catch (err) {
+    console.error(err);
+    showStatus('error', '❌ 파싱 중 오류가 발생했습니다. 다시 시도해주세요.');
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = () => reject(new Error('파일 읽기 실패'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function showStatus(type, msg) {
+  const el = document.getElementById('resume-status');
+  el.className = 'resume-parsing-status ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showResumePreview(data) {
+  const preview = document.getElementById('resume-preview');
+  const content = document.getElementById('resume-preview-content');
+  preview.style.display = 'block';
+  content.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div><strong>이름</strong>: ${data.name || '-'}</div>
+      <div><strong>직무</strong>: ${data.job || '-'}</div>
+      <div><strong>학력</strong>: ${data.school || '-'}</div>
+      <div><strong>MBTI</strong>: ${data.mbti || '-'}</div>
+      <div style="grid-column:1/-1"><strong>경력</strong>: ${data.career || '-'}</div>
+      <div style="grid-column:1/-1"><strong>요약</strong>: ${data.summary || '-'}</div>
+    </div>
+  `;
+}
+
+function applyResumeData() {
+  if (!parsedResumeData) return;
+  const d = parsedResumeData;
+  // 새 인턴 데이터로 추가 (기존 인턴이 없으면)
+  const exists = INTERNS.find(i => i.name === d.name);
+  if (!exists && d.name) {
+    const typeMap = { '마케팅':'marketing', 'AI·AX':'aiax', '사업기획·전략':'biz' };
+    INTERNS.push({
+      name: d.name,
+      job: d.job || '마케팅',
+      type: typeMap[d.job] || 'marketing',
+      mbti: d.mbti || '-',
+      age: d.age || '-',
+      school: d.school || '-',
+      career: d.career || '-',
+      score_mini: 0, score_test: 0, score_attitude: 0,
+      summary: d.summary || '',
+      attend_rate: 0, assign_rate: 0
+    });
+    showToast(`✅ ${d.name} 인턴 정보가 추가되었습니다`);
+  } else if (exists) {
+    // 기존 데이터 업데이트
+    Object.assign(exists, {
+      school: d.school || exists.school,
+      career: d.career || exists.career,
+      mbti: d.mbti || exists.mbti,
+      summary: d.summary || exists.summary
+    });
+    showToast(`✅ ${d.name} 인턴 정보가 업데이트되었습니다`);
+  }
+  document.getElementById('resume-preview').style.display = 'none';
+  document.getElementById('resume-status').style.display = 'none';
+  parsedResumeData = null;
+  renderDashboard();
+}
+
+function cancelResumeData() {
+  document.getElementById('resume-preview').style.display = 'none';
+  parsedResumeData = null;
+}
+
+// ──────────────────────────────────────────────
+// 권한 관리 페이지
+// ──────────────────────────────────────────────
+let permUsers = [
+  { name:'송유림', email:'yrsong@mobidays.com', role:'CO1' },
+  { name:'김연준', email:'yeonjun.kim@mobidays.com', role:'CO1' },
+  ...INTERNS.map(i => ({ name: i.name, email: i.name + '@intern.mobidays.com', role: 'Intern' }))
+];
+
+const ROLE_COLORS = {
+  CO1: { bg:'rgba(255,107,43,0.15)', border:'rgba(255,107,43,0.4)', text:'#FF6B2B' },
+  Member: { bg:'rgba(59,130,246,0.12)', border:'rgba(59,130,246,0.35)', text:'#3B82F6' },
+  Intern: { bg:'rgba(139,92,246,0.12)', border:'rgba(139,92,246,0.35)', text:'#8B5CF6' },
+};
+
+function renderPermPage() {
+  const list = document.getElementById('perm-intern-list');
+  if (!list) return;
+  list.innerHTML = permUsers.map((u, idx) => {
+    const rc = ROLE_COLORS[u.role] || ROLE_COLORS.Intern;
+    return `<div class="perm-row" style="display:grid;grid-template-columns:auto 160px auto 1fr;align-items:center;gap:0;padding:10px 0;">
+      <div style="padding:0 8px;display:flex;align-items:center;">
+        <button onclick="removePermUser(${idx})" style="padding:4px 8px;border-radius:20px;border:1px solid #FFCFB8;background:#FFF0EA;color:#FF6B2B;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1;" title="삭제">✕</button>
+      </div>
+      <div style="padding:0 8px;display:flex;align-items:center;gap:10px;">
+        <div class="perm-avatar" style="background:${rc.bg};color:${rc.text};border:1px solid ${rc.border};">${u.name[0]}</div>
+        <div>
+          <div class="perm-name">${u.name}</div>
+        </div>
+      </div>
+      <div style="padding:0 8px;min-width:220px;display:flex;gap:5px;justify-content:center;">
+        ${['CO1','Member','Intern'].map(r => `
+          <button onclick="setPermRole(${idx}, '${r}', this)" style="
+            padding:4px 12px;border-radius:20px;border:1.5px solid ${u.role===r ? ROLE_COLORS[r].border : 'var(--border-strong)'};
+            background:${u.role===r ? ROLE_COLORS[r].bg : 'white'};
+            color:${u.role===r ? ROLE_COLORS[r].text : 'var(--text-secondary)'};
+            font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;"
+          >${r}</button>`).join('')}
+      </div>
+      <div style="padding:0 8px;font-size:12px;color:var(--text-secondary);">${u.email}</div>
+    </div>`;
+  }).join('');
+}
+
+function setPermRole(idx, role, btn) {
+  permUsers[idx].role = role;
+  renderPermPage();
+  showToast(`✅ ${permUsers[idx].name} → ${role} 권한으로 변경됐습니다`);
+}
+
+function removePermUser(idx) {
+  const name = permUsers[idx].name;
+  if (!confirm(`${name}을(를) 목록에서 삭제하시겠습니까?`)) return;
+  permUsers.splice(idx, 1);
+  renderPermPage();
+  showToast(`🗑️ ${name} 삭제됨`);
+}
+
+function showAddUserModal() {
+  const modal = document.getElementById('add-user-modal');
+  modal.style.display = 'flex';
+  document.getElementById('new-user-name').value = '';
+  document.getElementById('new-user-email').value = '';
+  document.getElementById('new-user-role').value = 'Intern';
+}
+
+function closeAddUserModal() {
+  document.getElementById('add-user-modal').style.display = 'none';
+}
+
+function addNewUser() {
+  const name = document.getElementById('new-user-name').value.trim();
+  const email = document.getElementById('new-user-email').value.trim();
+  const role = document.getElementById('new-user-role').value;
+  if (!name) { showToast('⚠️ 이름을 입력해주세요'); return; }
+  permUsers.push({ name, email: email || '-', role });
+  closeAddUserModal();
+  renderPermPage();
+  showToast(`✅ ${name} 추가됨 (${role})`);
+}
+
+// ──────────────────────────────────────────────
+// PAGE NAV
+// ──────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+
+  const tabMap = { schedule:0, dashboard:1, record:2, video:3 };
+  const tabs = document.querySelectorAll('.nav-tab');
+  if (tabMap[id] !== undefined) tabs[tabMap[id]].classList.add('active');
+
+  if (id === 'dashboard') renderDashboard();
+  if (id === 'record') renderRecords();
+  if (id === 'video') {
+    // 직무 드롭다운 현재 직무로 동기화
+    const jobSel = document.getElementById('video-job-select');
+    if (jobSel) jobSel.value = currentJob;
+    updateVideoJobDayOptions();
+  }
+  if (id === 'perm') renderPermPage();
+  return false;
+}
+
+// ──────────────────────────────────────────────
+// TOAST
+// ──────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── INIT ──
+applyRole('hrd');
+renderSchedule();
+// 영상 뷰어 일자 목록 초기화
+setTimeout(() => updateVideoJobDayOptions(), 0);
+</script>
+</body>
+</html>
