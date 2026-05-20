@@ -261,13 +261,13 @@
     box-shadow: var(--shadow);
   }
   .timetable-head {
-    display: grid;
-    border-bottom: 2px solid var(--border);
-    position: sticky;
-    top: 57px;
-    z-index: 10;
-    background: var(--bg-card);
-  }
+  display: grid;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-card);
+}
   .timetable-head-time {
     background: var(--mobi-navy);
     color: rgba(255,255,255,0.75);
@@ -326,17 +326,20 @@
   }
 
   /* 셀에 배치되는 강의 카드 */
-  .tt-cell {
-    position: absolute;
-    left: 3px; right: 3px;
-    border-radius: 5px;
-    padding: 5px 8px;
-    overflow: visible;
-    z-index: 2;
-    cursor: pointer;
-    transition: box-shadow 0.1s;
-    background-clip: padding-box;
-  }
+ .tt-cell {
+  position: absolute;
+  left: 3px; right: 3px;
+  border-radius: 5px;
+
+  padding: 3px 6px;   /* 수정 */
+  box-sizing: border-box; /* 추가 */
+
+  overflow: visible;
+  z-index: 2;
+  cursor: pointer;
+  transition: box-shadow 0.1s;
+  background-clip: padding-box;
+}
   .tt-cell:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.14); z-index: 10; }
   .tt-cell.online  { background: #EFF6FF; border-left: 3px solid var(--online-color); }
   .tt-cell.offline { background: #ECFDF5; border-left: 3px solid var(--offline-color); }
@@ -345,7 +348,7 @@
   .tt-cell.task    { background: #FFFBEB; border-left: 3px solid #F59E0B; }
   .tt-cell.lunch   { background: #FFFBEB; border-left: 3px solid #F59E0B; }
 
-  .tt-name { font-size: 11px; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
+  .tt-name {  font-size: 11px;  font-weight: 700; color: var(--text-primary);line-height: 1.2; }
   .tt-meta { font-size: 9.5px; color: var(--text-secondary); margin-top: 1px; }
   .tt-badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
   .tt-badge {
@@ -1506,7 +1509,7 @@
         <thead>
           <tr>
             <th style="white-space:nowrap;">이름</th><th style="white-space:nowrap;">직무</th><th style="white-space:nowrap;min-width:130px;">학교</th><th style="white-space:nowrap;min-width:160px;">경력</th><th style="white-space:nowrap;">수강체크율</th><th style="white-space:nowrap;">미니테스트</th>
-            <th style="white-space:nowrap;">공통테스트(40%)</th><th style="white-space:nowrap;">태도평가(5%)</th><th style="white-space:nowrap;">지각/결석</th><th style="white-space:nowrap;min-width:200px;">태도 요약</th>
+            <th style="white-space:nowrap;">공통테스트</th><th style="white-space:nowrap;">태도평가</th><th style="white-space:nowrap;">지각/결석</th><th style="white-space:nowrap;min-width:200px;">태도 요약</th>
           </tr>
         </thead>
         <tbody id="detail-tbody"></tbody>
