@@ -296,9 +296,9 @@
   .timetable-time-slot {
     height: 72px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
-    padding: 4px 8px 0 0;
+    padding: 0 8px;
     font-size: 10.5px;
     font-weight: 600;
     color: #6B7280;
@@ -1795,6 +1795,7 @@ const SCHEDULE = {
       { day:'1일차', date:'6/22 월', eval:'DAY1 강의평가', lectures:[
         { time:'10:00~10:30', name:'인턴 프로그램 소개', type:'offline', teacher:'송유림', duration:'0.5h', links:['교안'], check:true, assign:false, hasVideo:false },
         { time:'10:30~12:00', name:'모비데이즈 소개 (대표님 세션)', type:'online', teacher:'-', duration:'1.5h', links:['영상'], check:true, assign:false, hasVideo:true },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:00~13:30', name:'대표이사 간담회', type:'offline', teacher:'-', duration:'0.5h', links:[], check:true, assign:false, hasVideo:false },
         { time:'14:00~16:00', name:'신규입사자 OJT', type:'offline', teacher:'구지현', duration:'2h', links:['자료'], check:true, assign:false, note:'계정세팅/회사소개/제도·복리후생/업무툴/생활TIP', hasVideo:false },
         { time:'16:00~16:30', name:'조직문화의 이해', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:false, hasVideo:false },
@@ -1805,6 +1806,7 @@ const SCHEDULE = {
       { day:'2일차', date:'6/23 화', eval:'DAY2 강의평가', lectures:[
         { time:'10:00~11:00', name:'재무 공통 교육', type:'offline', teacher:'김태호', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
         { time:'11:00~12:00', name:'법무 공통 교육', type:'offline', teacher:'김인서', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:30~14:30', name:'퍼포먼스마케팅 기초', type:'self', teacher:'-', duration:'1h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
         { time:'14:30~16:00', name:'모바일 광고시장', type:'online', teacher:'-', duration:'1.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
         { time:'16:00~17:30', name:'모비그룹 사업의 이해', type:'offline', teacher:'이광수·정성은·안정은', duration:'1.5h', links:['영상'], check:false, assign:false, hasVideo:true },
@@ -1814,6 +1816,7 @@ const SCHEDULE = {
         { time:'10:00~10:30', name:'재무·법무 미니테스트', type:'online', teacher:'-', duration:'0.5h', links:['시험 링크'], check:false, assign:false, hasVideo:false },
         { time:'11:00~11:30', name:'모바일 광고용어', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
         { time:'11:30~12:00', name:'미디어의 이해', type:'online', teacher:'-', duration:'0.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:30~14:00', name:'그로스/퍼널 마케팅/신규 트렌드 전략', type:'self', teacher:'-', duration:'0.5h', links:['자료'], check:false, assign:true, assignLabel:'과제 제출', hasVideo:false },
         { time:'14:00~15:00', name:'캠페인 업무 플로우', type:'self', teacher:'-', duration:'1h', links:['자료'], check:false, assign:false, isExam:true, hasVideo:false },
         { time:'15:00~16:00', name:'모비데이즈 상품 이해', type:'online', teacher:'-', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
@@ -1824,6 +1827,7 @@ const SCHEDULE = {
       { day:'4일차', date:'6/25 목', eval:'DAY4 강의평가', lectures:[
         { time:'10:00~11:00', name:'퍼널별 매체 전략', type:'offline', teacher:'천성화', duration:'1h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
         { time:'11:00~12:00', name:'데이터 분석 및 전략 설정', type:'offline', teacher:'정지성', duration:'1h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:00~14:00', name:'모비데이즈 플랫폼 전략 이해', type:'online', teacher:'-', duration:'1h', links:['영상'], check:false, assign:false, hasVideo:true },
         { time:'14:30~15:00', name:'미디어믹스의 이해', type:'online', teacher:'-', duration:'0.5h', links:['영상'], check:false, assign:false, isExam:true, hasVideo:true },
         { time:'15:00~16:30', name:'미디어믹스의 실전', type:'offline', teacher:'박화진', duration:'1.5h', links:['교안', '실습'], check:false, assign:false, hasVideo:false },
@@ -1833,6 +1837,7 @@ const SCHEDULE = {
       { day:'5일차', date:'6/26 금', eval:'DAY5 강의평가', lectures:[
         { time:'10:00~11:00', name:'공통교육 TEST', type:'exam', teacher:'-', duration:'1h', links:['시험 링크'], check:false, assign:false, hasVideo:false },
         { time:'11:00~12:00', name:'AI 공통 교육', type:'offline', teacher:'오정은', duration:'1h', links:['교안'], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:30~16:00', name:'구글 애널리틱스 4', type:'offline', teacher:'김민태', duration:'2.5h', links:['교안'], check:false, assign:false, hasVideo:false },
         { time:'17:00~18:00', name:'1주차 개인 회고', type:'task', teacher:'-', duration:'-', links:['제출폴더'], check:false, assign:true, assignLabel:'회고 파일 링크', hasVideo:false },
         { time:'18:00~18:30', name:'과제 안내 & 조별 미팅', type:'offline', teacher:'-', duration:'0.5h', links:[], check:false, assign:false, hasVideo:false },
@@ -1985,18 +1990,8 @@ function applyRole(role) {
 }
 
 function toggleUserRole() {
-  // 데모용: HRD ↔ 인턴 전환
-  if (currentRole === 'hrd') {
-    currentUser = '정의창';
-    document.getElementById('nav-username').textContent = currentUser;
-    applyRole('intern');
-    showToast('👤 인턴 보기로 전환했습니다');
-  } else {
-    currentUser = '송유림';
-    document.getElementById('nav-username').textContent = currentUser;
-    applyRole('hrd');
-    showToast('🔐 CO1 모드로 전환했습니다');
-  }
+  // 권한 변경 기능 비활성화 - 초기 권한으로만 접근 가능
+  showToast('🔒 권한 변경은 불가능합니다. 초기 계정으로만 접근 가능합니다.');
 }
 
 // ──────────────────────────────────────────────
@@ -2233,6 +2228,19 @@ function renderSchedule() {
   renderWeek(data.week2, 'Week 2', '6/29(월) ~ 7/3(금) · 과제 수행 및 최종 발표');
 
   container.innerHTML = html;
+
+  // 시간표가 10시부터 보이도록 스크롤 조정
+  setTimeout(() => {
+    const timetableWraps = document.querySelectorAll('.timetable-wrap');
+    timetableWraps.forEach(wrap => {
+      const firstRow = wrap.querySelector('.timetable-head');
+      if (firstRow) {
+        // 헤더 높이 (약 50px) 만큼 위로 스크롤해서 10:00이 명확히 보이도록
+        wrap.scrollLeft = 0; // 좌측 고정
+        wrap.parentElement.scrollTop = 0;
+      }
+    });
+  }, 50);
 
   // 팝오버 외부 클릭 닫기
   if (!window._popHandlerSet) {
