@@ -326,17 +326,20 @@
   }
 
   /* 셀에 배치되는 강의 카드 */
-  .tt-cell {
-    position: absolute;
-    left: 3px; right: 3px;
-    border-radius: 5px;
-    padding: 5px 8px;
-    overflow: visible;
-    z-index: 2;
-    cursor: pointer;
-    transition: box-shadow 0.1s;
-    background-clip: padding-box;
-  }
+ .tt-cell {
+  position: absolute;
+  left: 3px; right: 3px;
+  border-radius: 5px;
+
+  padding: 3px 6px;   /* 수정 */
+  box-sizing: border-box; /* 추가 */
+
+  overflow: visible;
+  z-index: 2;
+  cursor: pointer;
+  transition: box-shadow 0.1s;
+  background-clip: padding-box;
+}
   .tt-cell:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.14); z-index: 10; }
   .tt-cell.online  { background: #EFF6FF; border-left: 3px solid var(--online-color); }
   .tt-cell.offline { background: #ECFDF5; border-left: 3px solid var(--offline-color); }
@@ -345,7 +348,7 @@
   .tt-cell.task    { background: #FFFBEB; border-left: 3px solid #F59E0B; }
   .tt-cell.lunch   { background: #FFFBEB; border-left: 3px solid #F59E0B; }
 
-  .tt-name { font-size: 11px; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
+  .tt-name {  font-size: 11px;  font-weight: 700; color: var(--text-primary);line-height: 1.2; }
   .tt-meta { font-size: 9.5px; color: var(--text-secondary); margin-top: 1px; }
   .tt-badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
   .tt-badge {
