@@ -1847,11 +1847,13 @@ const SCHEDULE = {
       { day:'8일차', date:'6/29 월', eval:null, lectures:[
         { time:'10:00~', name:'RFP 분석 & 데이터 분석 (과제 시작)', type:'task', teacher:'-', duration:'-', links:['과제폴더'], check:false, assign:true, assignLabel:'과제폴더 링크', hasVideo:false },
         { time:'11:00~12:00', name:'방향성 설정 워크샵', type:'offline', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:30~', name:'기획 주제 리서치', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'17:00~', name:'제안서 Part 1 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
       ]},
       { day:'9일차', date:'6/30 화', eval:'DAY9 강의평가', lectures:[
         { time:'10:00~', name:'전략 설정 · 팀별 아이디어 구체화', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'14:30~15:00', name:'데이터 분석 실습 / 시나리오 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'15:00~18:00', name:'제안서 작성법의 기초', type:'offline', teacher:'김세웅', duration:'3h', links:['교안', '실습'], check:false, assign:false, hasVideo:true },
         { time:'18:00~', name:'제안서 Part 2 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
@@ -1859,17 +1861,20 @@ const SCHEDULE = {
       { day:'10일차', date:'7/1 수', eval:null, lectures:[
         { time:'10:00~', name:'리서치 내용 보완 / 근거 정리', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'11:00~', name:'제안서 Part 3 작성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'16:30~', name:'제안서 및 발표 자료 완성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'18:00~', name:'자체 리허설', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
       ]},
       { day:'11일차', date:'7/2 목', eval:'DAY11 강의평가', lectures:[
         { time:'10:00~', name:'제안서 및 발표 보완점 개선', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'14:00~17:00', name:'스피치 1:1 집중 코칭', type:'offline', teacher:'임지연', duration:'3h', links:['교안'], check:false, assign:false, hasVideo:true },
         { time:'17:00~', name:'최종 발표자료 완성', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'최종', name:'최종 자료 제출', type:'task', teacher:'-', duration:'-', links:['제출폴더'], check:false, assign:true, assignLabel:'최종파일 링크', hasVideo:false },
       ]},
       { day:'12일차', date:'7/3 금', eval:null, lectures:[
         { time:'10:00~', name:'최종 발표 (2층 라운지)', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
+        { time:'12:00~13:00', name:'🍽️ 웰컴 런치', type:'lunch', teacher:'-', duration:'1h', links:[], check:false, assign:false, hasVideo:false },
         { time:'13:00~', name:'모비톡 - 현직자 미니세션', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'14:00~', name:'BR 개인 면담', type:'offline', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
         { time:'17:00~', name:'장원식 (공통TEST + 발표)', type:'task', teacher:'-', duration:'-', links:[], check:false, assign:false, hasVideo:false },
@@ -2233,14 +2238,18 @@ function renderSchedule() {
   setTimeout(() => {
     const timetableWraps = document.querySelectorAll('.timetable-wrap');
     timetableWraps.forEach(wrap => {
-      const firstRow = wrap.querySelector('.timetable-head');
-      if (firstRow) {
-        // 헤더 높이 (약 50px) 만큼 위로 스크롤해서 10:00이 명확히 보이도록
-        wrap.scrollLeft = 0; // 좌측 고정
-        wrap.parentElement.scrollTop = 0;
+      // 헤더 높이 약 56px를 고려해서 10:00 시간 슬롯이 헤더 바로 아래 보이도록
+      const timeColumn = wrap.querySelector('.timetable-time-col');
+      if (timeColumn) {
+        const firstTimeSlot = timeColumn.querySelector('.timetable-time-slot');
+        if (firstTimeSlot) {
+          // 첫 번째 시간(10:00)의 위치로 스크롤 이동 (상위 패딩 고려)
+          wrap.parentElement.scrollTop = Math.max(0, firstTimeSlot.offsetTop - 70);
+        }
       }
+      wrap.scrollLeft = 0;
     });
-  }, 50);
+  }, 100);
 
   // 팝오버 외부 클릭 닫기
   if (!window._popHandlerSet) {
