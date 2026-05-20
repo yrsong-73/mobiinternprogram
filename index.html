@@ -2107,21 +2107,10 @@ function renderSchedule() {
       html += `<div class="timetable-day-col" id="col-${wIdx}-${di}">`;
 
       // 빈 슬롯들 렌더
-      TIME_SLOTS.forEach((t, si) => {
-        const isLunch = LUNCH_SLOTS.includes(t);
-        if (isLunch && t === '12:00') {
-          html += `<div class="timetable-slot lunch-slot" style="height:144px;">
-            <div class="tt-cell lunch" style="top:4px;height:136px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;">
-              <span style="font-size:12px;">🍱</span>
-              <span class="tt-name" style="color:#92400E;text-align:center;">웰컴런치</span>
-            </div>
-          </div>`;
-        } else if (isLunch && t === '12:30') {
-          // merged into 12:00
-        } else {
-          html += `<div class="timetable-slot"></div>`;
-        }
-      });
+    TIME_SLOTS.forEach((t, si) => {
+  const isLunch = LUNCH_SLOTS.includes(t);
+  html += `<div class="timetable-slot${isLunch ? ' lunch-slot' : ''}"></div>`;
+});
 
       // 강의 카드 오버레이 (절대 위치)
       day.lectures.forEach((lec, li) => {
