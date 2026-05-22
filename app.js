@@ -80,6 +80,12 @@ let evalCheckState = {};
 let assignLinks = {};
 let records = [];
 let parsedResumeData = null;
+let currentVideoDay = 'day1';
+let currentVideoIdx = -1;
+let videoProgress = {};
+let videoCompletedSet = new Set();
+let videoSimTimer = null;
+let currentSpeed = 1;
 
 function timeToSlotIndex(timeStr) {
   // e.g. "10:00" or "10:00~10:30"
